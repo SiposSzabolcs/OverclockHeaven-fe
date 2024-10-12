@@ -1,0 +1,125 @@
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  <!-- Carousel indicators (dots) -->
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center"
+        style="height: 600px"
+      >
+        <img
+          src="heropic1.png"
+          alt=""
+          style="height: 400px; object-fit: contain"
+        />
+
+        <div class="text-center mt-3">
+          <h1 class="text-light">Build Your Dream Gaming PC</h1>
+          <p class="text-light">
+            Choose components that fit your style and needs
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center"
+        style="height: 600px"
+      >
+        <img
+          src="heropic2.png"
+          alt=""
+          style="height: 350px; object-fit: contain"
+        />
+
+        <div class="text-center mt-3">
+          <h1 class="text-light">Top-Tier Components at Your Fingertips</h1>
+          <p class="text-light">Stay ahead with the latest gaming hardware</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center"
+        style="height: 600px"
+      >
+        <img
+          src="heropic3.png"
+          alt=""
+          style="height: 350px; object-fit: contain"
+        />
+
+        <div class="text-center mt-3">
+          <h1 class="text-light">Prebuilt PCs for Every Gamer</h1>
+          <p class="text-light">Powerful machines, ready to ship today</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel controls (arrows) -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<style>
+  .carousel-indicators [data-bs-target] {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #4a55ab;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .carousel-indicators .active {
+    background-color: #33c2e6;
+    transform: scale(1.2);
+  }
+
+  .carousel-indicators [data-bs-target]:hover {
+    background-color: #707ade;
+    transform: scale(1.1);
+  }
+</style>
