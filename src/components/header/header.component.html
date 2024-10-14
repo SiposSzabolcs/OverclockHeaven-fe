@@ -1,6 +1,6 @@
 <style>
   .custom-display-lg {
-    display: none; /* Hide by default */
+    display: none;
   }
 
   @media (min-width: 1031px) {
@@ -36,78 +36,124 @@
   }
 </style>
 
-<div style="width: 100vw; height: 800px; background-color: #0a1227">
-  <div class="container w-75 custom-display-lg">
-    <div class="row align-items-center py-3">
-      <div class="col-2 d-flex justify-content-center">
+<div class="container w-75 custom-display-lg">
+  <div class="row align-items-center py-3">
+    <div class="col-2 d-flex justify-content-center">
+      <img
+        src="logo.png"
+        class="img-fluid"
+        style="max-height: 100px"
+        alt="Logo"
+      />
+    </div>
+
+    <ul class="nav offset-1 col-6 justify-content-between d-flex">
+      <li
+        class="nav-item flex-fill text-center"
+        style="background-color: #4169e1"
+      >
+        <a
+          class="nav-link"
+          [class.active]="activeNavItem === 'Home'"
+          (click)="setActive('Home')"
+          href="#"
+          >Home</a
+        >
+      </li>
+      <li
+        class="nav-item flex-fill text-center"
+        style="background-color: #4169e1"
+      >
+        <a
+          class="nav-link"
+          [class.active]="activeNavItem === 'Features'"
+          (click)="setActive('Features')"
+          href="#"
+          >Features</a
+        >
+      </li>
+      <li
+        class="nav-item flex-fill text-center"
+        style="background-color: #4169e1"
+      >
+        <a
+          class="nav-link"
+          [class.active]="activeNavItem === 'Contact'"
+          (click)="setActive('Contact')"
+          href="#"
+          >Contact</a
+        >
+      </li>
+      <li
+        class="nav-item flex-fill text-center"
+        style="background-color: #4169e1"
+      >
+        <a
+          class="nav-link"
+          [class.active]="activeNavItem === 'Products'"
+          (click)="setActive('Products')"
+          href="#"
+          >Products</a
+        >
+      </li>
+    </ul>
+
+    <div
+      class="col-2 offset-1 d-flex justify-content-center align-items-center"
+    >
+      <div
+        class="rounded-circle"
+        style="
+          background-color: #4169e1;
+          height: 100px;
+          width: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 24px;
+          font-weight: bold;
+        "
+      >
+        <i class="fa-solid fa-user fa-2x" style="color: white"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container w-75 custom-display-sm">
+  <div class="row bg-black align-items-center py-3">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <!-- Logo -->
+      <div
+        class="d-flex justify-content-start align-items-center"
+        style="flex: 1"
+      >
         <img
           src="logo.png"
           class="img-fluid"
-          style="max-height: 100px"
+          style="max-height: 100px; width: auto"
           alt="Logo"
         />
       </div>
 
-      <ul class="nav offset-1 col-6 justify-content-between d-flex">
-        <li
-          class="nav-item flex-fill text-center"
-          style="background-color: #4169e1"
-        >
-          <a
-            class="nav-link"
-            [class.active]="activeNavItem === 'Home'"
-            (click)="setActive('Home')"
-            href="#"
-            >Home</a
-          >
-        </li>
-        <li
-          class="nav-item flex-fill text-center"
-          style="background-color: #4169e1"
-        >
-          <a
-            class="nav-link"
-            [class.active]="activeNavItem === 'Features'"
-            (click)="setActive('Features')"
-            href="#"
-            >Features</a
-          >
-        </li>
-        <li
-          class="nav-item flex-fill text-center"
-          style="background-color: #4169e1"
-        >
-          <a
-            class="nav-link"
-            [class.active]="activeNavItem === 'Contact'"
-            (click)="setActive('Contact')"
-            href="#"
-            >Contact</a
-          >
-        </li>
-        <li
-          class="nav-item flex-fill text-center"
-          style="background-color: #4169e1"
-        >
-          <a
-            class="nav-link"
-            [class.active]="activeNavItem === 'Products'"
-            (click)="setActive('Products')"
-            href="#"
-            >Products</a
-          >
-        </li>
-      </ul>
+      <!-- Hamburger Icon -->
+      <i
+        class="fa-solid fa-bars fa-4x"
+        style="color: white; flex: 0 0 auto"
+        (click)="toggleDropdown()"
+      ></i>
 
+      <!-- User Icon -->
       <div
-        class="col-2 offset-1 d-flex justify-content-center align-items-center"
+        class="d-flex justify-content-end align-items-center"
+        style="flex: 1"
       >
         <div
           class="rounded-circle"
           style="
-            background-color: aliceblue;
-            height: 100px;
-            width: 100px;
+            background-color: #4169e1;
+            height: 75px;
+            width: 75px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -115,80 +161,40 @@
             font-weight: bold;
           "
         >
-          <i class="fa-solid fa-user fa-2x"></i>
-        </div>
-      </div>
-    </div>
-    <app-header-hero></app-header-hero>
-  </div>
-
-  <div class="container w-75 custom-display-sm">
-    <div class="row bg-black align-items-center py-3">
-      <div class="d-flex justify-content-between align-items-center w-100">
-        <div class="d-flex justify-content-center">
-          <img
-            src="logo.png"
-            class="img-fluid"
-            style="max-height: 100px; width: auto; height: auto"
-            alt="Logo"
-          />
-        </div>
-
-        <i
-          class="fa-solid fa-bars fa-4x"
-          style="color: white"
-          (click)="toggleDropdown()"
-        ></i>
-
-        <div class="d-flex justify-content-center align-items-center">
-          <div
-            class="rounded-circle"
-            style="
-              background-color: aliceblue;
-              height: 80px;
-              width: 80px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-size: 24px;
-              font-weight: bold;
-            "
-          >
-            <i class="fa-solid fa-user fa-2x"></i>
-          </div>
+          <i class="fa-solid fa-user fa-2x" style="color: white"></i>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<div
+  *ngIf="isDropdownVisible"
+  class="container w-75 custom-display-sm text-center"
+  style="color: white; font-size: 24px"
+>
   <div
-    *ngIf="isDropdownVisible"
-    class="container w-75 custom-display-sm text-center"
-    style="color: white; font-size: 24px"
+    class="row bg-black border border-white border-top-0 p-3"
+    style="user-select: none; cursor: pointer"
   >
-    <div
-      class="row bg-black border border-white border-top-0 p-3"
-      style="user-select: none; cursor: pointer"
-    >
-      <div>Home</div>
-    </div>
-    <div
-      class="row bg-black border border-white border-top-0 p-3"
-      style="user-select: none; cursor: pointer"
-    >
-      <div>Features</div>
-    </div>
-    <div
-      class="row bg-black border border-white border-top-0 p-3"
-      style="user-select: none; cursor: pointer"
-    >
-      <div>Contact</div>
-    </div>
-    <div
-      class="row bg-black border border-white border-top-0 p-3"
-      style="user-select: none; cursor: pointer"
-    >
-      <div>Products</div>
-    </div>
+    <div>Home</div>
+  </div>
+  <div
+    class="row bg-black border border-white border-top-0 p-3"
+    style="user-select: none; cursor: pointer"
+  >
+    <div>Features</div>
+  </div>
+  <div
+    class="row bg-black border border-white border-top-0 p-3"
+    style="user-select: none; cursor: pointer"
+  >
+    <div>Contact</div>
+  </div>
+  <div
+    class="row bg-black border border-white border-top-0 p-3"
+    style="user-select: none; cursor: pointer"
+  >
+    <div>Products</div>
   </div>
 </div>
