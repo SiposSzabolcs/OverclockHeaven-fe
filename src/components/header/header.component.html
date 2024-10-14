@@ -80,7 +80,7 @@
           class="nav-link"
           [class.active]="activeNavItem === 'Contact'"
           (click)="setActive('Contact')"
-          href="#"
+          href="contact"
           >Contact</a
         >
       </li>
@@ -170,31 +170,35 @@
 
 <div
   *ngIf="isDropdownVisible"
-  class="container w-75 custom-display-sm text-center"
+  class="container w-75 custom-display-sm text-center pb-3"
   style="color: white; font-size: 24px"
 >
   <div
     class="row bg-black border border-white border-top-0 p-3"
     style="user-select: none; cursor: pointer"
   >
-    <div>Home</div>
+    <a class="nav-link" (click)="setActive('Home')" href="">Home</a>
   </div>
   <div
     class="row bg-black border border-white border-top-0 p-3"
     style="user-select: none; cursor: pointer"
   >
-    <div>Features</div>
+    <a class="nav-link" (click)="setActive('Features')" href="features"
+      >Features</a
+    >
   </div>
   <div
     class="row bg-black border border-white border-top-0 p-3"
     style="user-select: none; cursor: pointer"
   >
-    <div>Contact</div>
+    <a class="nav-link" (click)="setActive('Contact')" href="contact"
+      >Contact</a
+    >
   </div>
   <div
     class="row bg-black border border-white border-top-0 p-3"
     style="user-select: none; cursor: pointer"
   >
-    <div>Products</div>
+    <a class="nav-link" (click)="setActive('Products')" href="#">Products</a>
   </div>
 </div>

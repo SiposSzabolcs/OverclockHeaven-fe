@@ -4,6 +4,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { LandingPageComponent } from '../pages/landing-page/landing-page.component';
 import { FeaturesPageComponent } from '../pages/features-page/features-page.component';
+import { ContactPageComponent } from '../pages/contact-page/contact-page.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { FeaturesPageComponent } from '../pages/features-page/features-page.comp
     FooterComponent,
     LandingPageComponent,
     FeaturesPageComponent,
+    ContactPageComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
