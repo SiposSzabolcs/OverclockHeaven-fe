@@ -3,34 +3,50 @@
   style="background-color: #f0f8ff; border-radius: 8px"
 >
   <div class="d-flex align-items-center justify-content-between">
-    <div style="flex: 1">
+    <div *ngIf="Direction === 'left'; else rightSide" style="flex: 1">
       <img
-        src="heropic1.png"
+        [src]="imgSrc"
         alt="Company Logo"
         class="img-fluid responsive-image"
       />
     </div>
-    <div class="ms-4" style="flex: 2">
-      <h1 class="mb-2">Get the Ultimate Gaming Experience</h1>
-      <h2 class="mb-3">Build, Customize, and Dominate</h2>
+
+    <div *ngIf="Direction === 'left'" style="flex: 2" class="ms-4">
+      <h1 class="mb-2">{{ h1Content }}</h1>
+      <h2 class="mb-3">{{ h2Content }}</h2>
       <p class="mb-4">
-        Discover top-quality components, create your custom build, or choose
-        from our range of high-performance prebuilt PCs. Your dream gaming rig
-        is just a few clicks away.
+        {{ pContent }}
       </p>
       <button
         class="btn btn-primary mt-2 me-2"
         style="background-color: #33c2e6; border-color: #33c2e6"
       >
-        Start Building Now
-      </button>
-      <button
-        class="btn btn-light mt-2"
-        style="background-color: #e6f7ff; border-color: #e6f7ff"
-      >
-        View Prebuilt PCs
+        {{ buttonContent }}
       </button>
     </div>
+
+    <ng-template #rightSide>
+      <div style="flex: 2" class="ms-4">
+        <h1 class="mb-2">{{ h1Content }}</h1>
+        <h2 class="mb-3">{{ h2Content }}</h2>
+        <p class="mb-4">
+          {{ pContent }}
+        </p>
+        <button
+          class="btn btn-primary mt-2 me-2"
+          style="background-color: #33c2e6; border-color: #33c2e6"
+        >
+          {{ buttonContent }}
+        </button>
+      </div>
+      <div style="flex: 1">
+        <img
+          [src]="imgSrc"
+          alt="Company Logo"
+          class="img-fluid responsive-image"
+        />
+      </div>
+    </ng-template>
   </div>
 </div>
 
@@ -41,30 +57,22 @@
   <div class="d-flex flex-column align-items-center justify-content-between">
     <div style="flex: 1">
       <img
-        src="heropic1.png"
+        [src]="imgSrc"
         alt="Company Logo"
         class="img-fluid responsive-image mb-3"
       />
     </div>
     <div class="ms-4 text-center" style="flex: 2">
-      <h4 class="mb-3">Get the Ultimate Gaming Experience</h4>
-      <h5 class="mb-3">Shop, Choose, and Play</h5>
+      <h4 class="mb-3">{{ h1Content }}</h4>
+      <h5 class="mb-3">{{ h2Content }}</h5>
       <p class="mb-4">
-        Discover our range of high-performance prebuilt PCs or explore our store
-        for top-quality components to enhance your gaming setup. Your perfect
-        gaming rig is just a few clicks away.
+        {{ pContent }}
       </p>
       <button
         class="btn btn-primary mt-2 me-2"
         style="background-color: #33c2e6; border-color: #33c2e6"
       >
-        Explore Parts Store
-      </button>
-      <button
-        class="btn btn-light mt-2"
-        style="background-color: #e6f7ff; border-color: #e6f7ff"
-      >
-        Shop Prebuilt PCs
+        {{ buttonContent }}
       </button>
     </div>
   </div>
