@@ -34,6 +34,20 @@
     background-color: #f8f9fa;
     color: black;
   }
+
+  .dropdown-menu {
+    display: block;
+    z-index: 1000; /* Ensures the dropdown appears above other content */
+  }
+
+  .dropdown-item {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0; /* Change color on hover */
+  }
 </style>
 
 <div class="container w-75 custom-display-lg">
@@ -99,7 +113,7 @@
     </ul>
 
     <div
-      class="col-2 offset-1 d-flex justify-content-center align-items-center"
+      class="col-2 offset-1 position-relative d-flex justify-content-center align-items-center"
     >
       <div
         class="rounded-circle"
@@ -113,8 +127,26 @@
           font-size: 24px;
           font-weight: bold;
         "
+        (click)="toggleUserDropdown($event)"
       >
         <i class="fa-solid fa-user fa-2x" style="color: white"></i>
+      </div>
+
+      <!-- User Dropdown Menu -->
+      <div
+        *ngIf="isUserDropdownVisible"
+        class="dropdown-menu"
+        [style]="{
+          position: 'absolute',
+          top: dropdown_top_percent,
+          right: '0',
+          backgroundColor: '#ffffff',
+          color: '#000000',
+          border: '1px solid #ccc'
+        }"
+      >
+        <div class="dropdown-item" (click)="login()">Login</div>
+        <div class="dropdown-item" (click)="logout()">Logout</div>
       </div>
     </div>
   </div>

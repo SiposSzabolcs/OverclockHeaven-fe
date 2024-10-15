@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -13,8 +13,10 @@ import { filter } from 'rxjs';
 export class HeaderComponent implements OnInit {
   isDropdownVisible = false;
   activeNavItem: string = 'Home';
+  isUserDropdownVisible: boolean = false;
+  dropdown_top_percent = '75%';
 
-  constructor(private router: Router) {}
+  router = inject(Router);
 
   ngOnInit() {
     // Check local storage for the active nav item
@@ -38,6 +40,29 @@ export class HeaderComponent implements OnInit {
 
   setActive(navItem: string) {
     this.activeNavItem = navItem;
+  }
+
+  toggleUserDropdown(event: MouseEvent) {
+    let pixel;
+    if (event.layerY < 25) {
+      pixel = 25;
+    } else {
+      pixel = event.layerY;
+    }
+    this.dropdown_top_percent = `${pixel}%`;
+    this.isUserDropdownVisible = !this.isUserDropdownVisible;
+  }
+
+  login() {
+    this.router.navigateByUrl('login');
+    console.log('Login clicked');
+    this.isUserDropdownVisible = false;
+  }
+
+  logout() {
+    localStorage.removeItem('jwtToken');
+    console.log('Logout clicked');
+    this.isUserDropdownVisible = false;
   }
 
   private setActiveBasedOnRoute(url: string) {
