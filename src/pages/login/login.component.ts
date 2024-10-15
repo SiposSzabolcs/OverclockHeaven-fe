@@ -22,6 +22,7 @@ export class LoginComponent {
     password: '',
   };
   isLoading = false;
+  alertState = false;
 
   http = inject(HttpClient);
   router = inject(Router);
@@ -46,10 +47,12 @@ export class LoginComponent {
       .post('http://localhost:8080/auth/authenticate', this.loginObject)
       .subscribe((res: any) => {
         if (res.result) {
+          this.alertState = false;
           alert('Login Success');
           localStorage.setItem('jwtToken', res.token);
           this.router.navigateByUrl('');
         } else {
+          this.alertState = true;
           alert(res.msg);
         }
       });

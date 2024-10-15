@@ -1,7 +1,13 @@
-<div style="width: 100vw; background-color: #0a1227">
+<div
+  *ngIf="shouldShowHeaderFooter()"
+  style="width: 100vw; background-color: #0a1227"
+>
   <app-header></app-header>
 </div>
-<router-outlet />
-<div style="width: 100vw; background-color: #0a1227">
+<router-outlet></router-outlet>
+<div
+  *ngIf="shouldShowHeaderFooter()"
+  style="width: 100vw; background-color: #0a1227"
+>
   <app-footer></app-footer>
 </div>

@@ -3,6 +3,7 @@ import { LandingPageComponent } from '../pages/landing-page/landing-page.compone
 import { FeaturesPageComponent } from '../pages/features-page/features-page.component';
 import { ContactPageComponent } from '../pages/contact-page/contact-page.component';
 import { LoginComponent } from '../pages/login/login.component';
+import { RegisterComponent } from '../pages/register/register.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
 ];

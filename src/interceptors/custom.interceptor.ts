@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const customInterceptor: HttpInterceptorFn = (req, next) => {
-  const isLoginRequest = req.url.includes('/auth/authenticate');
+  const isLoginRequest = req.url.includes('/auth');
 
   if (!isLoginRequest) {
     const token = localStorage.getItem('jwtToken');
