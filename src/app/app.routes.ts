@@ -4,6 +4,7 @@ import { FeaturesPageComponent } from '../pages/features-page/features-page.comp
 import { ContactPageComponent } from '../pages/contact-page/contact-page.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { RegisterComponent } from '../pages/register/register.component';
+import { AddProductPageComponent } from '../pages/add-product-page/add-product-page.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'products/add',
+    component: AddProductPageComponent,
   },
 ];

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { UsersService } from '../../services/users/users.service';
 
 @Component({
   selector: 'app-header',
@@ -15,17 +16,25 @@ export class HeaderComponent implements OnInit {
   activeNavItem: string = 'Home';
   isUserDropdownVisible: boolean = false;
   dropdown_top_percent = '75%';
+  isLoggedIn = false;
 
   router = inject(Router);
+  users = inject(UsersService);
 
-  ngOnInit() {
-    // Check local storage for the active nav item
+  async ngOnInit() {
     const storedNavItem = localStorage.getItem('activeNavItem');
+    const isValid = await this.users.CheckTokenExpried();
+
     if (storedNavItem) {
-      this.activeNavItem = storedNavItem; // Set to stored item
+      this.activeNavItem = storedNavItem;
     }
 
-    // Listen for route changes and update activeNavItem
+    console.log(isValid);
+
+    if (isValid) {
+      this.isLoggedIn = true;
+    }
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -61,6 +70,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('jwtToken');
+    this.isLoggedIn = false;
     console.log('Logout clicked');
     this.isUserDropdownVisible = false;
   }

@@ -17,7 +17,16 @@ export class HeaderHeroComponent implements OnInit {
         console.log(data);
       },
       error: (error) => {
-        console.error('Error fetching products:', error);
+        console.error(error.error.error);
+      },
+    });
+
+    this.http.get<any[]>('http://localhost:8080/users').subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => {
+        console.error(error.error.error);
       },
     });
   }
