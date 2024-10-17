@@ -1,0 +1,15 @@
+<div style="position: relative; height: 20px">
+  <img
+    src="stars.png"
+    alt="Filled Stars"
+    style="height: 20px; position: absolute"
+    [style.clipPath]="'inset(0 ' + percentRating + '% 0 0)'"
+    title="Rating: {{ rating }}"
+    class="mb-3 z-1"
+  />
+  <img
+    src="stars-unfilled.png"
+    alt="Unfilled Stars"
+    style="height: 20px; position: absolute"
+  />
+</div>

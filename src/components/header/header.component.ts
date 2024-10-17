@@ -23,16 +23,8 @@ export class HeaderComponent implements OnInit {
 
   async ngOnInit() {
     const storedNavItem = localStorage.getItem('activeNavItem');
-    const isValid = await this.users.CheckTokenExpried();
-
     if (storedNavItem) {
       this.activeNavItem = storedNavItem;
-    }
-
-    console.log(isValid);
-
-    if (isValid) {
-      this.isLoggedIn = true;
     }
 
     this.router.events
@@ -41,6 +33,13 @@ export class HeaderComponent implements OnInit {
         const currentUrl = this.router.url;
         this.setActiveBasedOnRoute(currentUrl);
       });
+
+    const isValid = await this.users.CheckTokenExpried();
+    console.log(isValid);
+
+    if (isValid) {
+      this.isLoggedIn = true;
+    }
   }
 
   toggleDropdown() {
