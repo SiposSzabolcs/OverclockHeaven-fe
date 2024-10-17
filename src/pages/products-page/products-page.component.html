@@ -4,44 +4,109 @@
     <div
       class="col-9 border-bottom border-start border-black d-flex align-items-center justify-content-end"
     >
-      <button class="btn btn-primary col-3">Sort</button>
+      <div class="position-relative col-3">
+        <button
+          class="btn btn-primary col-12"
+          (click)="enableSortDropdownVisibility()"
+        >
+          Sort
+        </button>
+        <div
+          *ngIf="isSortDropdownVisible"
+          class="dropdown-menu col-12"
+          style="
+            position: absolute;
+            top: -2px;
+            right: 0;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #ccc;
+          "
+        >
+          <div class="dropdown-item" (click)="changeSortBy('rating')">
+            Rating
+          </div>
+          <div class="dropdown-item" (click)="changeSortBy('priceLowToHigh')">
+            Price: low to high
+          </div>
+          <div class="dropdown-item" (click)="changeSortBy('priceHighToLow')">
+            Price: high to low
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-3" style="padding: 0px; margin: 0px">
       <div
-        class="bg-body-secondary d-flex justify-content-center align-items-center user-select-none border-bottom border-black"
+        class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
+        [ngClass]="{ active: activeButton === 1 }"
+        (click)="setActiveButton(1)"
       >
         Example
       </div>
       <div
-        class="bg-body-secondary d-flex justify-content-center align-items-center user-select-none border-bottom border-black"
+        class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
+        [ngClass]="{ active: activeButton === 2 }"
+        (click)="setActiveButton(2)"
       >
         Example
       </div>
       <div
-        class="bg-body-secondary d-flex justify-content-center align-items-center user-select-none border-bottom border-black"
+        class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
+        [ngClass]="{ active: activeButton === 3 }"
+        (click)="setActiveButton(3)"
       >
         Example
       </div>
       <div
-        class="bg-body-secondary d-flex justify-content-center align-items-center user-select-none border-bottom border-black"
+        class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
+        [ngClass]="{ active: activeButton === 4 }"
+        (click)="setActiveButton(4)"
       >
         Example
       </div>
       <div
-        class="bg-body-secondary d-flex justify-content-center align-items-center user-select-none border-bottom border-black"
+        class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
+        [ngClass]="{ active: activeButton === 5 }"
+        (click)="setActiveButton(5)"
       >
         Example
       </div>
     </div>
     <div class="col-9" style="margin: 0; padding: 0">
-      <app-products-list [sortBy]="'rating'"></app-products-list>
+      <app-products-list [sortBy]="sortBy"></app-products-list>
     </div>
   </div>
 </div>
+
+<style>
+  .sidebar-button {
+    color: white;
+    background-color: #4169e1;
+  }
+
+  .active {
+    background-color: #03c2f6;
+    color: black;
+  }
+
+  .dropdown-menu {
+    display: block;
+    z-index: 10;
+  }
+
+  .dropdown-item {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0; /* Change color on hover */
+  }
+</style>

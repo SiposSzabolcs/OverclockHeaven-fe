@@ -9,4 +9,23 @@ import { ProductsListComponent } from '../../components/products-list/products-l
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css',
 })
-export class ProductsPageComponent {}
+export class ProductsPageComponent {
+  activeButton: number | null = 1;
+  isSortDropdownVisible = false;
+  sortBy = 'ratings';
+
+  enableSortDropdownVisibility() {
+    this.isSortDropdownVisible = true;
+  }
+
+  changeSortBy(sortBy: string) {
+    this.sortBy = sortBy;
+    this.isSortDropdownVisible = false;
+  }
+
+  setActiveButton(buttonNumber: number): void {
+    console.log(buttonNumber);
+
+    this.activeButton = buttonNumber;
+  }
+}

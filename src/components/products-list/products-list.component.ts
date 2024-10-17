@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ProductComponent } from '../product/product.component';
 
 @Component({
@@ -10,8 +17,8 @@ import { ProductComponent } from '../product/product.component';
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.css',
 })
-export class ProductsListComponent {
-  @Input() sortBy!: any;
+export class ProductsListComponent implements OnInit, OnChanges {
+  @Input() sortBy!: string;
   http = inject(HttpClient);
   data: any[] = [];
   loading: boolean = true;
@@ -19,37 +26,8 @@ export class ProductsListComponent {
   ngOnInit() {
     this.http.get<any[]>('http://localhost:8080/products/get').subscribe({
       next: (data) => {
-        switch (this.sortBy) {
-          case 'priceLowToHigh':
-            this.data = data.sort((a, b) => a.price - b.price);
-            break;
-          case 'priceHighToLow':
-            this.data = data.sort((a, b) => b.price - a.price);
-            break;
-          case 'rating':
-          default:
-            this.data = data.sort((a, b) => {
-              const averageRatingA =
-                a.ratings.length > 0
-                  ? a.ratings.reduce(
-                      (sum: number, rating: number) => sum + rating,
-                      0
-                    ) / a.ratings.length
-                  : 0;
-              const averageRatingB =
-                b.ratings.length > 0
-                  ? b.ratings.reduce(
-                      (sum: number, rating: number) => sum + rating,
-                      0
-                    ) / b.ratings.length
-                  : 0;
-
-              return averageRatingB - averageRatingA;
-            });
-            break;
-        }
-        console.log(data);
-
+        this.data = data;
+        this.sortProducts();
         this.loading = false;
       },
       error: (error) => {
@@ -57,5 +35,43 @@ export class ProductsListComponent {
         this.loading = false;
       },
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['sortBy']) {
+      this.sortProducts();
+    }
+  }
+
+  private sortProducts() {
+    switch (this.sortBy) {
+      case 'priceLowToHigh':
+        this.data.sort((a, b) => a.price - b.price);
+        break;
+      case 'priceHighToLow':
+        this.data.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating':
+      default:
+        this.data.sort((a, b) => {
+          const averageRatingA =
+            a.ratings.length > 0
+              ? a.ratings.reduce(
+                  (sum: number, rating: number) => sum + rating,
+                  0
+                ) / a.ratings.length
+              : 0;
+          const averageRatingB =
+            b.ratings.length > 0
+              ? b.ratings.reduce(
+                  (sum: number, rating: number) => sum + rating,
+                  0
+                ) / b.ratings.length
+              : 0;
+
+          return averageRatingB - averageRatingA;
+        });
+        break;
+    }
   }
 }
