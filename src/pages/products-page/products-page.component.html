@@ -41,46 +41,49 @@
       <div
         class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
-        [ngClass]="{ active: activeButton === 1 }"
-        (click)="setActiveButton(1)"
+        [ngClass]="{ active: activeButton === 'CPUs' }"
+        (click)="setActiveButton('CPUs')"
       >
-        Example
+        CPUs
       </div>
       <div
         class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
-        [ngClass]="{ active: activeButton === 2 }"
-        (click)="setActiveButton(2)"
+        [ngClass]="{ active: activeButton === 'Graphics cards' }"
+        (click)="setActiveButton('Graphics cards')"
       >
-        Example
+        Graphics cards
       </div>
       <div
         class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
-        [ngClass]="{ active: activeButton === 3 }"
-        (click)="setActiveButton(3)"
+        [ngClass]="{ active: activeButton === 'RAM sticks' }"
+        (click)="setActiveButton('RAM sticks')"
       >
-        Example
+        RAM sticks
       </div>
       <div
         class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
-        [ngClass]="{ active: activeButton === 4 }"
-        (click)="setActiveButton(4)"
+        [ngClass]="{ active: activeButton === 'Motherboards' }"
+        (click)="setActiveButton('Motherboards')"
       >
-        Example
+        Motherboards
       </div>
       <div
         class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
-        [ngClass]="{ active: activeButton === 5 }"
-        (click)="setActiveButton(5)"
+        [ngClass]="{ active: activeButton === 'Prebuilt PCs' }"
+        (click)="setActiveButton('Prebuilt PCs')"
       >
-        Example
+        Prebuilt PCs
       </div>
     </div>
     <div class="col-9" style="margin: 0; padding: 0">
-      <app-products-list [sortBy]="sortBy"></app-products-list>
+      <app-products-list
+        [sortBy]="sortBy"
+        [tag]="activeButton"
+      ></app-products-list>
     </div>
   </div>
 </div>

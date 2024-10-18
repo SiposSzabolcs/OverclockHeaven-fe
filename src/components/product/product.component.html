@@ -1,11 +1,13 @@
 <div class="p-4 d-flex border-start border-bottom border-black">
-  <img [src]="product.imgUrl" alt="" style="height: 175px" class="pe-4" />
-  <div class="d-flex flex-column">
-    <h6>{{ product.name }}</h6>
-    <app-star-rating [rating]="rating"></app-star-rating>
-    <p>
-      <b>{{ product.price }} $</b>
-    </p>
-    <button class="btn btn-primary" style="width: 40%">Add to cart</button>
+  <div class="row">
+    <img [src]="product.imgUrl" alt="" class="col-3" />
+    <div class="d-flex flex-column col-9">
+      <h6>{{ product.name }}</h6>
+      <app-star-rating [rating]="rating"></app-star-rating>
+      <p>
+        <b>{{ product.price }} $</b>
+      </p>
+      <button class="btn btn-primary" style="width: 40%">Add to cart</button>
+    </div>
   </div>
 </div>

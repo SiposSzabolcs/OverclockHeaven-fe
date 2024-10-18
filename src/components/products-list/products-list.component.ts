@@ -19,27 +19,62 @@ import { ProductComponent } from '../product/product.component';
 })
 export class ProductsListComponent implements OnInit, OnChanges {
   @Input() sortBy!: string;
+  @Input() tag!: string;
+  urlTag: string = '';
   http = inject(HttpClient);
   data: any[] = [];
   loading: boolean = true;
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8080/products/get').subscribe({
-      next: (data) => {
-        this.data = data;
-        this.sortProducts();
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error(error.error.error);
-        this.loading = false;
-      },
-    });
+    this.fetchProductsByTag();
+  }
+
+  fetchProductsByTag() {
+    this.loading = true;
+
+    switch (this.tag) {
+      case 'CPUs':
+        this.urlTag = 'cpu';
+        break;
+      case 'Graphics cards':
+        this.urlTag = 'gpu';
+        break;
+      case 'RAM sticks':
+        this.urlTag = 'ram';
+        break;
+      case 'Motherboards':
+        this.urlTag = 'motherboard';
+        break;
+      case 'Prebuilt PCs':
+        this.urlTag = 'prebuilt';
+        break;
+      default:
+        this.urlTag = 'gpu';
+        break;
+    }
+
+    this.http
+      .get<any[]>(`http://localhost:8080/products/get/${this.urlTag}`)
+      .subscribe({
+        next: (data) => {
+          this.data = data;
+          this.sortProducts();
+          this.loading = false;
+        },
+        error: (error) => {
+          console.error(error.error.error);
+          this.loading = false;
+        },
+      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['sortBy']) {
       this.sortProducts();
+    }
+
+    if (changes['tag']) {
+      this.fetchProductsByTag();
     }
   }
 

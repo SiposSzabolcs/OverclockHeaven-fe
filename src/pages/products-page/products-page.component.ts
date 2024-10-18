@@ -10,7 +10,7 @@ import { ProductsListComponent } from '../../components/products-list/products-l
   styleUrl: './products-page.component.css',
 })
 export class ProductsPageComponent {
-  activeButton: number | null = 1;
+  activeButton: string = 'CPUs';
   isSortDropdownVisible = false;
   sortBy = 'ratings';
 
@@ -23,7 +23,7 @@ export class ProductsPageComponent {
     this.isSortDropdownVisible = false;
   }
 
-  setActiveButton(buttonNumber: number): void {
+  setActiveButton(buttonNumber: string): void {
     console.log(buttonNumber);
 
     this.activeButton = buttonNumber;
