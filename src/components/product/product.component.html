@@ -7,7 +7,13 @@
       <p>
         <b>{{ product.price }} $</b>
       </p>
-      <button class="btn btn-primary" style="width: 40%">Add to cart</button>
+      <button
+        class="btn btn-primary"
+        style="width: 40%"
+        (click)="addToCartClicked()"
+      >
+        Add to cart
+      </button>
     </div>
   </div>
 </div>

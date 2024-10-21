@@ -148,6 +148,9 @@
         <div *ngIf="!this.isLoggedIn" class="dropdown-item" (click)="login()">
           Login
         </div>
+        <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="cart()">
+          Cart
+        </div>
         <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="logout()">
           Logout
         </div>

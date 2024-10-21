@@ -63,14 +63,17 @@ export class HeaderComponent implements OnInit {
 
   login() {
     this.router.navigateByUrl('login');
-    console.log('Login clicked');
     this.isUserDropdownVisible = false;
   }
 
   logout() {
     localStorage.removeItem('jwtToken');
     this.isLoggedIn = false;
-    console.log('Logout clicked');
+    this.isUserDropdownVisible = false;
+  }
+
+  cart() {
+    this.router.navigateByUrl('cart');
     this.isUserDropdownVisible = false;
   }
 
