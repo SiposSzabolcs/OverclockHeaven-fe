@@ -3,12 +3,12 @@
     <app-cart-product [product]="product"></app-cart-product>
   </div>
   <div class="d-flex py-4 px-1 justify-content-between align-items-center">
-    <button class="btn btn-primary col-3" (click)="routerConfig('back')">
+    <button class="btn btn-primary col-3" (click)="backClicked()">
       Back to store
     </button>
     <div class="d-flex flex-column col-4">
       <h2 class="text-center">Total: {{ totalPrice }} $</h2>
-      <button class="btn btn-success" (click)="routerConfig('continue')">
+      <button class="btn btn-success" (click)="checkout()">
         Continue to payment
       </button>
     </div>
