@@ -6,7 +6,10 @@
 </div>
 
 <div *ngIf="!loading">
-  <div *ngFor="let product of data">
+  <div
+    *ngFor="let product of data; let i = index"
+    [ngClass]="{ 'border-bottom border-black': i !== data.length - 1 }"
+  >
     <app-product [product]="product"></app-product>
   </div>
 </div>

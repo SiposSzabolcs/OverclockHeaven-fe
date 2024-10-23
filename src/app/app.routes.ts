@@ -8,6 +8,7 @@ import { AddProductPageComponent } from '../pages/add-product-page/add-product-p
 import { ProductsPageComponent } from '../pages/products-page/products-page.component';
 import { CartComponent } from '../pages/cart/cart.component';
 import { SuccessPageComponent } from '../pages/success-page/success-page.component';
+import { SingleProductPageComponent } from '../pages/single-product-page/single-product-page.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
   {
     path: 'products',
     component: ProductsPageComponent,
+  },
+  {
+    path: 'products/product',
+    component: SingleProductPageComponent,
   },
   {
     path: 'products/add',

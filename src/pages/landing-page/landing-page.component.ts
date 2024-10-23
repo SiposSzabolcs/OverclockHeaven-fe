@@ -14,7 +14,8 @@ export class LandingPageComponent {
   h1Content: string = 'Get the Ultimate Gaming Experience';
   h2Content: string = 'Shop, Choose, and Play';
   pContent: string =
-    'Discover our range of high-performance prebuilt PCs or explore our storefor top-quality components to enhance your gaming setup. Your perfect gaming rig is just a few clicks away.';
+    'Discover our range of high-performance prebuilt PCs or explore our store for top-quality components to enhance your gaming setup. Your perfect gaming rig is just a few clicks away.';
   buttonContent: string = 'Explore the Store';
   imgSrc: string = 'heropic1.png';
+  buttonROute: string = 'products';
 }

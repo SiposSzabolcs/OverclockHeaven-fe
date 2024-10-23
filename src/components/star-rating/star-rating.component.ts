@@ -13,7 +13,6 @@ export class StarRatingComponent implements OnInit {
 
   ngOnInit(): void {
     this.percentRating = this.getPercentRating(this.rating);
-    console.log(this.percentRating);
   }
 
   getPercentRating(rating: number): number {

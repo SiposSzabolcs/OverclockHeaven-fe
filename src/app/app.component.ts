@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { LandingPageComponent } from '../pages/landing-page/landing-page.component';
@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'OverclockHeaven';
 
   router = inject(Router);
@@ -30,5 +30,13 @@ export class AppComponent {
   shouldShowHeaderFooter(): boolean {
     const currentRoute = this.router.url;
     return !(currentRoute === '/login' || currentRoute === '/register');
+  }
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
   }
 }

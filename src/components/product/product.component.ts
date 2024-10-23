@@ -2,6 +2,9 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ProductService } from '../../services/products/product.service';
 
 interface UserResponse {
   id: number;
@@ -10,16 +13,19 @@ interface UserResponse {
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [StarRatingComponent],
+  imports: [StarRatingComponent, CommonModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
 export class ProductComponent implements OnInit {
   @Input() product: any;
+  @Input() lastElement!: any;
   rating: number = 0;
   userId: number = 0;
   users = inject(UsersService);
   http = inject(HttpClient);
+  router = inject(Router);
+  productService = inject(ProductService);
 
   ngOnInit(): void {
     if (this.product.ratings.length != 0) {
@@ -48,6 +54,11 @@ export class ProductComponent implements OnInit {
           console.error('Error sending email', error);
         },
       });
+  }
+
+  navigateToProductPage() {
+    this.productService.setProduct(this.product);
+    this.router.navigate(['/products/product']);
   }
 
   getRating(ratings: number[]) {

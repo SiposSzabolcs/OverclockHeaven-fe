@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image-text',
@@ -15,4 +16,11 @@ export class ImageTextComponent {
   @Input() pContent: string = '';
   @Input() buttonContent: string = '';
   @Input() imgSrc: string = '';
+  @Input() buttonRoute: string = '';
+
+  router = inject(Router);
+
+  buttonClicked() {
+    this.router.navigateByUrl(this.buttonRoute);
+  }
 }

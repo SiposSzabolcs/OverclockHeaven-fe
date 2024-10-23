@@ -184,7 +184,7 @@
 
       <!-- User Icon -->
       <div
-        class="d-flex justify-content-end align-items-center"
+        class="d-flex justify-content-end align-items-center position-relative"
         style="flex: 1"
       >
         <div
@@ -199,8 +199,32 @@
             font-size: 24px;
             font-weight: bold;
           "
+          (click)="toggleUserDropdown($event)"
         >
           <i class="fa-solid fa-user fa-2x" style="color: white"></i>
+        </div>
+
+        <div
+          *ngIf="isUserDropdownVisible"
+          class="dropdown-menu"
+          [style]="{
+            position: 'absolute',
+            top: dropdown_top_percent,
+            right: '0',
+            backgroundColor: '#ffffff',
+            color: '#000000',
+            border: '1px solid #ccc'
+          }"
+        >
+          <div *ngIf="!this.isLoggedIn" class="dropdown-item" (click)="login()">
+            Login
+          </div>
+          <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="cart()">
+            Cart
+          </div>
+          <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="logout()">
+            Logout
+          </div>
         </div>
       </div>
     </div>

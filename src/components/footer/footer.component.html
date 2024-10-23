@@ -47,10 +47,34 @@
     </div>
     <div class="col-3">
       <h2 class="text-white m-3">Sitemap</h2>
-      <h5 class="text-white m-3" style="cursor: pointer">Home</h5>
-      <h5 class="text-white m-3" style="cursor: pointer">Features</h5>
-      <h5 class="text-white m-3" style="cursor: pointer">Products</h5>
-      <h5 class="text-white m-3" style="cursor: pointer">Contact</h5>
+      <h5
+        class="text-white m-3"
+        style="cursor: pointer"
+        (click)="routerConfig('')"
+      >
+        Home
+      </h5>
+      <h5
+        class="text-white m-3"
+        style="cursor: pointer"
+        (click)="routerConfig('features')"
+      >
+        Features
+      </h5>
+      <h5
+        class="text-white m-3"
+        style="cursor: pointer"
+        (click)="routerConfig('products')"
+      >
+        Products
+      </h5>
+      <h5
+        class="text-white m-3"
+        style="cursor: pointer"
+        (click)="routerConfig('contact')"
+      >
+        Contact
+      </h5>
     </div>
     <div class="col-4">
       <div class="d-flex flex-column">
@@ -118,10 +142,30 @@
     </button>
   </form>
   <h2 class="text-white m-3">Sitemap</h2>
-  <h5 class="text-white m-3" style="cursor: pointer">Home</h5>
-  <h5 class="text-white m-3" style="cursor: pointer">Features</h5>
-  <h5 class="text-white m-3" style="cursor: pointer">Products</h5>
-  <h5 class="text-white m-3" style="cursor: pointer">Contact</h5>
+  <h5 class="text-white m-3" style="cursor: pointer" (click)="routerConfig('')">
+    Home
+  </h5>
+  <h5
+    class="text-white m-3"
+    style="cursor: pointer"
+    (click)="routerConfig('features')"
+  >
+    Features
+  </h5>
+  <h5
+    class="text-white m-3"
+    style="cursor: pointer"
+    (click)="routerConfig('products')"
+  >
+    Products
+  </h5>
+  <h5
+    class="text-white m-3"
+    style="cursor: pointer"
+    (click)="routerConfig('contact')"
+  >
+    Contact
+  </h5>
   <div class="d-flex flex-column">
     <img
       src="logo.png"

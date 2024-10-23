@@ -1,0 +1,51 @@
+<div class="container w-75 py-5" style="background-color: #e7f6ff">
+  <div class="row pb-5">
+    <img
+      [src]="product.imgUrl"
+      alt=""
+      class="col-3"
+      style="max-height: 250px; width: auto; max-width: 100%"
+    />
+    <div class="col-8">
+      <h4 class="col-12">{{ product.name }}</h4>
+      <div class="border-black pb-2 border-bottom">
+        <app-star-rating [rating]="rating"></app-star-rating>
+      </div>
+      <p class="col-9">{{ product.description }}</p>
+      <h5>
+        <b class="col-3">{{ product.price }} $</b>
+      </h5>
+      <button class="btn btn-success col-6">Add to cart</button>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      *ngIf="product.comments.length > 0 || product.ratings.length > 0"
+      class="pt-2 border-black border-top col-5"
+    >
+      <div class="ps-3">
+        <h1>User Reviews</h1>
+        <app-user-review-stars
+          *ngIf="product.ratings.length > 0"
+          [ratings]="product.ratings"
+        ></app-user-review-stars>
+      </div>
+    </div>
+    <div
+      class="col-7 pt-2 border-black border-top border-start"
+      *ngIf="product.comments.length > 0"
+    >
+      <h1>Comments</h1>
+      <div
+        *ngFor="let comment of product.comments; let i = index"
+        class="row"
+        [ngClass]="{
+          'border-bottom border-black': i !== product.comments.length - 1
+        }"
+      >
+        <h3>{{ comment.name }}</h3>
+        <p>{{ comment.content }}</p>
+      </div>
+    </div>
+  </div>
+</div>

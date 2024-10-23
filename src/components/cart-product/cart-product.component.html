@@ -1,4 +1,4 @@
-<div class="p-4 d-flex border border-top-0 border-black">
+<div class="p-4 d-flex border border-top-0 border-black custom-display-lg">
   <div class="row">
     <img [src]="product.imgUrl" alt="" class="col-3" />
     <h6 class="col-6 d-flex align-items-center">{{ product.name }}</h6>
@@ -7,3 +7,35 @@
     </p>
   </div>
 </div>
+
+<div class="p-4 d-flex border border-top-0 border-black custom-display-sm">
+  <div class="row d-flex justify-content-center">
+    <img [src]="product.imgUrl" alt="" class="col-6" />
+    <h6 class="col-10 d-flex align-items-center">{{ product.name }}</h6>
+    <p class="col-2 d-flex align-items-center">
+      <b>{{ product.price }} $</b>
+    </p>
+  </div>
+</div>
+
+<style>
+  .custom-display-lg {
+    display: none !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-lg {
+      display: block !important;
+    }
+  }
+
+  .custom-display-sm {
+    display: block !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-sm {
+      display: none !important;
+    }
+  }
+</style>

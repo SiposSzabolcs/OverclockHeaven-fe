@@ -1,0 +1,30 @@
+<div>
+  <div class="p-1">
+    <p style="color: hsl(0, 0%, 46%)">{{ ratings.length }} ratings</p>
+    <app-star-rating class="img-fluid" [rating]="rating"></app-star-rating>
+    <p>{{ rating }} out of 5</p>
+  </div>
+
+  <div *ngFor="let rating of [5, 4, 3, 2, 1]">
+    <div class="d-flex align-items-center p-1 col-7">
+      <span class="col-4">{{ rating }} Star:</span>
+      <div
+        class="position-relative mx-1 col-6"
+        style="
+          height: 20px;
+          border-radius: 4px;
+          overflow: hidden;
+          background-color: grey;
+          width: 75%;
+        "
+      >
+        <div
+          class="px-1"
+          [style.width.%]="ratingsPercentages[rating] || 0"
+          style="height: 20px; background-color: yellow"
+        ></div>
+      </div>
+      <span>{{ ratingsPercentages[rating] || 0 | number : "1.0-2" }}%</span>
+    </div>
+  </div>
+</div>

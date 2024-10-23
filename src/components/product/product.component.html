@@ -1,8 +1,16 @@
-<div class="p-4 d-flex border-start border-bottom border-black">
+<div class="p-4 d-flex border-start border-black custom-display-lg">
   <div class="row">
-    <img [src]="product.imgUrl" alt="" class="col-3" />
+    <img
+      (click)="navigateToProductPage()"
+      style="cursor: pointer"
+      [src]="product.imgUrl"
+      alt=""
+      class="col-3"
+    />
     <div class="d-flex flex-column col-9">
-      <h6>{{ product.name }}</h6>
+      <h6 (click)="navigateToProductPage()" style="cursor: pointer">
+        {{ product.name }}
+      </h6>
       <app-star-rating [rating]="rating"></app-star-rating>
       <p>
         <b>{{ product.price }} $</b>
@@ -17,3 +25,50 @@
     </div>
   </div>
 </div>
+
+<div class="p-4 d-flex border-start border-black custom-display-sm">
+  <div class="row">
+    <img
+      (click)="navigateToProductPage()"
+      [src]="product.imgUrl"
+      alt=""
+      class="col-6"
+    />
+    <div class="d-flex flex-column col-12">
+      <h6 (click)="navigateToProductPage()">{{ product.name }}</h6>
+      <app-star-rating [rating]="rating"></app-star-rating>
+      <p>
+        <b>{{ product.price }} $</b>
+      </p>
+      <button
+        class="btn btn-primary"
+        style="width: 40%"
+        (click)="addToCartClicked()"
+      >
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-display-lg {
+    display: none !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-lg {
+      display: block !important;
+    }
+  }
+
+  .custom-display-sm {
+    display: block !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-sm {
+      display: none !important;
+    }
+  }
+</style>
