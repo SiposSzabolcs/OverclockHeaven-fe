@@ -44,6 +44,10 @@
         }"
       >
         <h3>{{ comment.name }}</h3>
+        <app-star-rating
+          class="mb-2"
+          [rating]="comment.rating"
+        ></app-star-rating>
         <p>{{ comment.content }}</p>
       </div>
     </div>

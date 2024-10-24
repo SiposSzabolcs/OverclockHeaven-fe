@@ -7,6 +7,7 @@ import { CartProductComponent } from '../../components/cart-product/cart-product
 import { map, switchMap } from 'rxjs';
 import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.development';
 
 interface UserResponse {
   cart: [];
@@ -36,16 +37,16 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartItems().subscribe(() => {
+      this.isLoading = false;
       this.getTotalPrice();
 
-      this.stripe = this.stripeFactory.create(
-        'pk_test_51QBCMmRrg3X4nKEi6z72mICCJQQRT8Xrvjob0mK5SJtr7Lmy3ZiINKZiRgxRobYHiObWcYJBPx4KFZahvkDsDGEK002VM2QxZR'
-      );
+      this.stripe = this.stripeFactory.create(environment.stripePublicKey);
       this.stripeAmount = this.totalPrice;
     });
   }
 
   getCartItems() {
+    this.isLoading = true;
     const postBodyGetId = { email: this.users.getEmailFromToken() };
 
     return this.http
