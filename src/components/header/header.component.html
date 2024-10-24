@@ -145,13 +145,32 @@
           border: '1px solid #ccc'
         }"
       >
-        <div *ngIf="!this.isLoggedIn" class="dropdown-item" (click)="login()">
+        <div
+          *ngIf="!this.isLoggedIn"
+          class="dropdown-item"
+          (click)="dropdownConfig('login')"
+        >
           Login
         </div>
-        <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="cart()">
+        <div
+          *ngIf="this.isLoggedIn"
+          class="dropdown-item"
+          (click)="dropdownConfig('cart')"
+        >
           Cart
         </div>
-        <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="logout()">
+        <div
+          *ngIf="this.isLoggedIn"
+          class="dropdown-item"
+          (click)="dropdownConfig('purchaseHistory')"
+        >
+          Purchase history
+        </div>
+        <div
+          *ngIf="this.isLoggedIn"
+          class="dropdown-item"
+          (click)="dropdownConfig('logout')"
+        >
           Logout
         </div>
       </div>
@@ -216,13 +235,32 @@
             border: '1px solid #ccc'
           }"
         >
-          <div *ngIf="!this.isLoggedIn" class="dropdown-item" (click)="login()">
+          <div
+            *ngIf="!this.isLoggedIn"
+            class="dropdown-item"
+            (click)="dropdownConfig('login')"
+          >
             Login
           </div>
-          <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="cart()">
+          <div
+            *ngIf="this.isLoggedIn"
+            class="dropdown-item"
+            (click)="dropdownConfig('cart')"
+          >
             Cart
           </div>
-          <div *ngIf="this.isLoggedIn" class="dropdown-item" (click)="logout()">
+          <div
+            *ngIf="this.isLoggedIn"
+            class="dropdown-item"
+            (click)="dropdownConfig('purchaseHistory')"
+          >
+            Purchase History
+          </div>
+          <div
+            *ngIf="this.isLoggedIn"
+            class="dropdown-item"
+            (click)="dropdownConfig('logout')"
+          >
             Logout
           </div>
         </div>

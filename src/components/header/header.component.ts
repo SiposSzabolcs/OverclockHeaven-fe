@@ -61,20 +61,26 @@ export class HeaderComponent implements OnInit {
     this.isUserDropdownVisible = !this.isUserDropdownVisible;
   }
 
-  login() {
-    this.router.navigateByUrl('login');
-    this.isUserDropdownVisible = false;
-  }
-
-  logout() {
-    localStorage.removeItem('jwtToken');
-    this.isLoggedIn = false;
-    this.isUserDropdownVisible = false;
-  }
-
-  cart() {
-    this.router.navigateByUrl('cart');
-    this.isUserDropdownVisible = false;
+  dropdownConfig(button: string) {
+    switch (button) {
+      case 'login':
+        this.router.navigateByUrl('login');
+        this.isUserDropdownVisible = false;
+        break;
+      case 'logout':
+        localStorage.removeItem('jwtToken');
+        this.isLoggedIn = false;
+        this.isUserDropdownVisible = false;
+        break;
+      case 'cart':
+        this.router.navigateByUrl('cart');
+        this.isUserDropdownVisible = false;
+        break;
+      case 'purchaseHistory':
+        this.router.navigateByUrl('cart');
+        this.isUserDropdownVisible = false;
+        break;
+    }
   }
 
   private setActiveBasedOnRoute(url: string) {
