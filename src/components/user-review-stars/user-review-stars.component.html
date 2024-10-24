@@ -2,7 +2,7 @@
   <div class="p-1">
     <p style="color: hsl(0, 0%, 46%)">{{ ratings.length }} ratings</p>
     <app-star-rating class="img-fluid" [rating]="rating"></app-star-rating>
-    <p>{{ rating }} out of 5</p>
+    <p>{{ rating | number : "1.2-2" }} out of 5</p>
   </div>
 
   <div *ngFor="let rating of [5, 4, 3, 2, 1]">

@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-star-rating',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './star-rating.component.html',
   styleUrl: './star-rating.component.css',
 })

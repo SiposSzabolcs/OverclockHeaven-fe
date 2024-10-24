@@ -10,7 +10,7 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
   styleUrl: './user-review-stars.component.css',
 })
 export class UserReviewStarsComponent implements OnInit {
-  @Input() ratings: number[] = [];
+  @Input() ratings: any[] = [];
   rating: number = 0;
   ratings_dict: { [key: number]: number } = {};
   ratingsPercentages: { [key: number]: number } = {};
@@ -25,8 +25,8 @@ export class UserReviewStarsComponent implements OnInit {
     this.ratings_dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
     for (let rating of this.ratings) {
-      if (this.ratings_dict.hasOwnProperty(rating)) {
-        this.ratings_dict[rating]++;
+      if (this.ratings_dict.hasOwnProperty(rating.rating)) {
+        this.ratings_dict[rating.rating]++;
       }
     }
 
@@ -47,8 +47,11 @@ export class UserReviewStarsComponent implements OnInit {
     }
   }
 
-  getRating(ratings: number[]) {
-    const sum = ratings.reduce((a: number, b: number) => a + b, 0);
+  getRating(ratings: { id: number; rating: number; userId: number }[]) {
+    const sum = ratings.reduce(
+      (total: number, current: { rating: number }) => total + current.rating,
+      0
+    );
     return sum / ratings.length;
   }
 }

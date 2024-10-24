@@ -30,8 +30,11 @@ export class SingleProductPageComponent {
     }
   }
 
-  getRating(ratings: number[]) {
-    const sum = ratings.reduce((a: number, b: number) => a + b, 0);
+  getRating(ratings: { id: number; rating: number; userId: number }[]) {
+    const sum = ratings.reduce(
+      (total: number, current: { rating: number }) => total + current.rating,
+      0
+    );
     return sum / ratings.length;
   }
 }

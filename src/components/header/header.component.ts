@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
         this.isUserDropdownVisible = false;
         break;
       case 'purchaseHistory':
-        this.router.navigateByUrl('cart');
+        this.router.navigateByUrl('purchaseHistory');
         this.isUserDropdownVisible = false;
         break;
     }

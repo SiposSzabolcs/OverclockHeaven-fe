@@ -1,0 +1,8 @@
+<div class="container w-75 pb-2">
+  <div *ngFor="let product of purchaseHistory">
+    <app-cart-product
+      [product]="product"
+      [showPrice]="false"
+    ></app-cart-product>
+  </div>
+</div>

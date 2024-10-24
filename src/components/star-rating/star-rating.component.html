@@ -6,7 +6,7 @@
     alt="Filled Stars"
     style="height: 20px; position: absolute; top: 0; left: 0"
     [style.clipPath]="'inset(0 ' + percentRating + '% 0 0)'"
-    title="Rating: {{ rating }}"
+    title="Rating: {{ rating | number : '1.2-2' }}"
     class="z-1"
   />
   <img
