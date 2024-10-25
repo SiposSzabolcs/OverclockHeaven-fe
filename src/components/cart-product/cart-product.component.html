@@ -6,7 +6,9 @@
       <b>{{ product.price }} $</b>
     </p>
     <div *ngIf="!showPrice" class="col-3">
-      <button class="btn btn-success col-8">Rate</button>
+      <button class="btn btn-success col-8" (click)="rateButtonClicked()">
+        Rate
+      </button>
     </div>
   </div>
 </div>
@@ -18,6 +20,11 @@
     <p *ngIf="showPrice" class="col-2 d-flex align-items-center">
       <b>{{ product.price }} $</b>
     </p>
+    <div *ngIf="!showPrice" class="col-3 pt-4">
+      <button class="btn btn-success col-8" (click)="rateButtonClicked()">
+        Rate
+      </button>
+    </div>
   </div>
 </div>
 

@@ -10,6 +10,7 @@ import { CartComponent } from '../pages/cart/cart.component';
 import { SuccessPageComponent } from '../pages/success-page/success-page.component';
 import { SingleProductPageComponent } from '../pages/single-product-page/single-product-page.component';
 import { PurchaseHistoryPageComponent } from '../pages/purchase-history-page/purchase-history-page.component';
+import { RatingPageComponent } from '../pages/rating-page/rating-page.component';
 
 export const routes: Routes = [
   {
@@ -55,5 +56,9 @@ export const routes: Routes = [
   {
     path: 'purchaseHistory',
     component: PurchaseHistoryPageComponent,
+  },
+  {
+    path: 'products/rating',
+    component: RatingPageComponent,
   },
 ];

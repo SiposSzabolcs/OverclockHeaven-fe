@@ -1,0 +1,74 @@
+<div class="container w-75">
+  <div class="p-4 d-flex border border-top-0 border-black custom-display-lg">
+    <div class="row justify-content-center align-items-center">
+      <img [src]="product.imgUrl" alt="" class="col-3" />
+      <h6 class="col-6 d-flex align-items-center">{{ product.name }}</h6>
+    </div>
+  </div>
+
+  <div class="p-4 d-flex border border-top-0 border-black custom-display-sm">
+    <div class="row d-flex justify-content-center">
+      <img [src]="product.imgUrl" alt="" class="col-6" />
+      <h6 class="col-10 d-flex align-items-center">{{ product.name }}</h6>
+    </div>
+  </div>
+
+  <form class="my-5">
+    <div class="mb-3">
+      <label for="rating">Rating (1-5)</label>
+      <input
+        type="number"
+        id="rating"
+        class="form-control bg-body-secondary border border-2 border-info rounded"
+        [(ngModel)]="CommentObject.rating"
+        name="rating"
+        value="1"
+        min="1"
+        max="5"
+      />
+      <div class="text-danger">
+        Rating is required and must be between 1 and 5.
+      </div>
+      <label for="content" class="form-label">Comment</label>
+      <div class="input-group">
+        <textarea
+          type="text"
+          class="form-control bg-body-secondary border border-2 border-info rounded"
+          id="content"
+          placeholder="Content"
+          [(ngModel)]="CommentObject.content"
+          name="content"
+        ></textarea>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-success w-100 mt-3"
+      (click)="onComment()"
+    >
+      Rate product
+    </button>
+  </form>
+</div>
+
+<style>
+  .custom-display-lg {
+    display: none !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-lg {
+      display: block !important;
+    }
+  }
+
+  .custom-display-sm {
+    display: block !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-sm {
+      display: none !important;
+    }
+  }
+</style>
