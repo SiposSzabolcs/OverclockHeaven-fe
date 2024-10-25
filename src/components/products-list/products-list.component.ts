@@ -92,14 +92,16 @@ export class ProductsListComponent implements OnInit, OnChanges {
           const averageRatingA =
             a.ratings.length > 0
               ? a.ratings.reduce(
-                  (sum: number, rating: number) => sum + rating,
+                  (sum: number, rating: { rating: number }) =>
+                    sum + rating.rating,
                   0
                 ) / a.ratings.length
               : 0;
           const averageRatingB =
             b.ratings.length > 0
               ? b.ratings.reduce(
-                  (sum: number, rating: number) => sum + rating,
+                  (sum: number, rating: { rating: number }) =>
+                    sum + rating.rating,
                   0
                 ) / b.ratings.length
               : 0;

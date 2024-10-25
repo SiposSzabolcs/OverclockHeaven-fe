@@ -1,11 +1,19 @@
-<div *ngIf="isLoading" class="text-center py-5">
+<div
+  *ngIf="isLoading"
+  class="text-center py-5"
+  style="background-color: #e7f6ff"
+>
   <div class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
   <p>Loading your cart...</p>
 </div>
 
-<div *ngIf="!isLoading && cart.length === 0" class="text-center py-5">
+<div
+  *ngIf="!isLoading && cart.length === 0"
+  class="text-center py-5"
+  style="background-color: #e7f6ff"
+>
   <h2>Your cart is empty</h2>
   <button class="btn btn-primary mt-3" (click)="backClicked()">
     Back to store

@@ -39,9 +39,6 @@ export class CartComponent implements OnInit {
     this.getCartItems().subscribe(() => {
       this.isLoading = false;
       this.getTotalPrice();
-
-      this.stripe = this.stripeFactory.create(environment.stripePublicKey);
-      this.stripeAmount = this.totalPrice;
     });
   }
 
@@ -68,6 +65,9 @@ export class CartComponent implements OnInit {
   checkout() {
     this.isLoading = true;
     const host = 'http://localhost:8080';
+
+    this.stripe = this.stripeFactory.create(environment.stripePublicKey);
+    this.stripeAmount = this.totalPrice;
 
     this.http
       .post(
