@@ -3,6 +3,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { UsersService } from '../../services/users/users.service';
+import { HttpClient } from '@angular/common/http';
+
+interface UserResponse {
+  role: string;
+}
 
 @Component({
   selector: 'app-header',
@@ -17,15 +22,19 @@ export class HeaderComponent implements OnInit {
   isUserDropdownVisible: boolean = false;
   dropdown_top_percent = '75%';
   isLoggedIn = false;
+  isAuthorized: boolean = false;
 
   router = inject(Router);
   users = inject(UsersService);
+  http = inject(HttpClient);
 
   async ngOnInit() {
     const storedNavItem = localStorage.getItem('activeNavItem');
     if (storedNavItem) {
       this.activeNavItem = storedNavItem;
     }
+
+    this.isUserAuthorized();
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -48,6 +57,22 @@ export class HeaderComponent implements OnInit {
 
   setActive(navItem: string) {
     this.activeNavItem = navItem;
+  }
+
+  isUserAuthorized() {
+    let email = { email: this.users.getEmailFromToken() };
+
+    this.http
+      .post<UserResponse>('http://localhost:8080/users/email', email)
+      .subscribe((response) => {
+        console.log(response);
+
+        if (response.role === 'ADMIN') {
+          this.isAuthorized = true;
+        }
+
+        console.log(this.isAuthorized);
+      });
   }
 
   toggleUserDropdown(event: MouseEvent) {
@@ -78,6 +103,10 @@ export class HeaderComponent implements OnInit {
         break;
       case 'purchaseHistory':
         this.router.navigateByUrl('purchaseHistory');
+        this.isUserDropdownVisible = false;
+        break;
+      case 'admin':
+        this.router.navigateByUrl('admin');
         this.isUserDropdownVisible = false;
         break;
     }

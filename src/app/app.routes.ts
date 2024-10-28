@@ -11,6 +11,7 @@ import { SuccessPageComponent } from '../pages/success-page/success-page.compone
 import { SingleProductPageComponent } from '../pages/single-product-page/single-product-page.component';
 import { PurchaseHistoryPageComponent } from '../pages/purchase-history-page/purchase-history-page.component';
 import { RatingPageComponent } from '../pages/rating-page/rating-page.component';
+import { AdminPanelPageComponent } from '../pages/admin-panel-page/admin-panel-page.component';
 
 export const routes: Routes = [
   {
@@ -60,5 +61,9 @@ export const routes: Routes = [
   {
     path: 'products/rating',
     component: RatingPageComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminPanelPageComponent,
   },
 ];
