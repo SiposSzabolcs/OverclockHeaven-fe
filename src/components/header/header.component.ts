@@ -34,7 +34,9 @@ export class HeaderComponent implements OnInit {
       this.activeNavItem = storedNavItem;
     }
 
-    this.isUserAuthorized();
+    if (localStorage.getItem('jwtToken')) {
+      this.isUserAuthorized();
+    }
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

@@ -1,1 +1,82 @@
-<p>admin-panel-page works!</p>
+<div
+  class="container w-75 custom-display-lg d-flex flex-column justify-content-center align-items-center"
+  style="min-height: 400px; background-color: #e7f6ff"
+>
+  <h1 class="text-center">What would you like to do?</h1>
+  <div class="d-flex align-content-center justify-content-center">
+    <div
+      class="rounded-4 m-4 p-5 border border-dark"
+      style="width: 33%; background-color: rgb(207, 207, 243); cursor: pointer"
+      (click)="routerConfig('add')"
+    >
+      <h5 class="text-center user-select-none">Add product</h5>
+    </div>
+    <div
+      class="rounded-4 m-4 p-5 border border-dark"
+      style="width: 33%; background-color: rgb(207, 207, 243); cursor: pointer"
+      (click)="routerConfig('change')"
+    >
+      <h5 class="text-center user-select-none">Change product</h5>
+    </div>
+    <div
+      class="rounded-4 m-4 p-5 border border-dark"
+      style="width: 33%; background-color: rgb(207, 207, 243); cursor: pointer"
+    >
+      <h5 class="text-center user-select-none">Analytics panel</h5>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 custom-display-sm">
+  <h1 class="text-center">What would you like to do?</h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-4 mx-1 my-4">
+      <div
+        class="rounded-4 p-5 border border-dark"
+        style="background-color: rgb(207, 207, 243); cursor: pointer"
+        (click)="routerConfig('add')"
+      >
+        <h5 class="text-center user-select-none">Add product</h5>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mx-1 my-4">
+      <div
+        class="rounded-4 p-5 border border-dark"
+        style="background-color: rgb(207, 207, 243); cursor: pointer"
+        (click)="routerConfig('change')"
+      >
+        <h5 class="text-center user-select-none">Change product</h5>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mx-1 my-4">
+      <div
+        class="rounded-4 p-5 border border-dark"
+        style="background-color: rgb(207, 207, 243); cursor: pointer"
+      >
+        <h5 class="text-center user-select-none">Analytics panel</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-display-lg {
+    display: none !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-lg {
+      display: flex !important;
+    }
+  }
+
+  .custom-display-sm {
+    display: block !important;
+  }
+
+  @media (min-width: 1031px) {
+    .custom-display-sm {
+      display: none !important;
+    }
+  }
+</style>

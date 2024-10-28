@@ -12,6 +12,7 @@ import { SingleProductPageComponent } from '../pages/single-product-page/single-
 import { PurchaseHistoryPageComponent } from '../pages/purchase-history-page/purchase-history-page.component';
 import { RatingPageComponent } from '../pages/rating-page/rating-page.component';
 import { AdminPanelPageComponent } from '../pages/admin-panel-page/admin-panel-page.component';
+import { ChangeProductPageComponent } from '../pages/change-product-page/change-product-page.component';
 
 export const routes: Routes = [
   {
@@ -43,10 +44,6 @@ export const routes: Routes = [
     component: SingleProductPageComponent,
   },
   {
-    path: 'products/add',
-    component: AddProductPageComponent,
-  },
-  {
     path: 'cart',
     component: CartComponent,
   },
@@ -65,5 +62,13 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminPanelPageComponent,
+  },
+  {
+    path: 'admin/add',
+    component: AddProductPageComponent,
+  },
+  {
+    path: 'admin/change',
+    component: ChangeProductPageComponent,
   },
 ];

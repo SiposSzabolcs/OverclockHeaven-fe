@@ -25,6 +25,20 @@ export class AddProductPageComponent {
     this.selectedFile = event.target.files[0];
   }
 
+  private resetForm(): void {
+    this.product = {
+      name: '',
+      description: '',
+      price: 0,
+      tag: '',
+    };
+    this.selectedFile = null;
+    const fileInput = document.getElementById('file') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  }
+
   onSubmit(): void {
     if (!this.selectedFile) {
       alert('Please select a file');
@@ -41,6 +55,7 @@ export class AddProductPageComponent {
     this.http.post('http://localhost:8080/products/add', formData).subscribe(
       (response) => {
         console.log('Product added successfully', response);
+        this.resetForm();
       },
       (error) => {
         console.error('Error adding product', error);
