@@ -1,5 +1,12 @@
 <div class="container w-75 my-5" style="background-color: #e7f6ff">
-  <h2 class="mb-4 text-center">Add New Product</h2>
+  <div class="row">
+    <i
+      class="col-1 fa-solid fa-arrow-left fa-3x"
+      style="cursor: pointer"
+      (click)="backArrowClick()"
+    ></i>
+    <h2 class="mb-4 text-center col-10">Add New Product</h2>
+  </div>
   <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="file" class="form-label">Upload File</label>

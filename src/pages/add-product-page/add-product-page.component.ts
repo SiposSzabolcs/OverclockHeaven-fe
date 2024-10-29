@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-page',
@@ -20,9 +21,14 @@ export class AddProductPageComponent {
   selectedFile: File | null = null;
 
   http = inject(HttpClient);
+  router = inject(Router);
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+  }
+
+  backArrowClick() {
+    this.router.navigateByUrl('admin');
   }
 
   private resetForm(): void {

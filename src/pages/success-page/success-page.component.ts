@@ -34,16 +34,24 @@ export class SuccessPageComponent {
     const host = 'http://localhost:8080';
     this.http.get(`${host}/payment/session/${sessionId}`).subscribe(
       (response: any) => {
+        console.log(response);
+
         this.paymentStatus = response.payment_status;
         this.loading = false;
 
-        const postBodyGetId = { email: this.users.getEmailFromToken() };
+        this.http
+          .post('http://localhost:8080/payment/add', {
+            amount: response.amount_total,
+            userEmail: this.users.getEmailFromToken(),
+          })
+          .subscribe((response) => {
+            console.log(response);
+          });
 
         this.http
-          .post<UserResponse>(
-            'http://localhost:8080/users/email',
-            postBodyGetId
-          )
+          .post<UserResponse>('http://localhost:8080/users/email', {
+            email: this.users.getEmailFromToken(),
+          })
           .subscribe({
             next: (response) => {
               this.http
