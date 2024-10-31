@@ -13,6 +13,7 @@ import { PurchaseHistoryPageComponent } from '../pages/purchase-history-page/pur
 import { RatingPageComponent } from '../pages/rating-page/rating-page.component';
 import { AdminPanelPageComponent } from '../pages/admin-panel-page/admin-panel-page.component';
 import { ChangeProductPageComponent } from '../pages/change-product-page/change-product-page.component';
+import { AnalyticsPageComponent } from '../pages/analytics-page/analytics-page.component';
 
 export const routes: Routes = [
   {
@@ -70,5 +71,9 @@ export const routes: Routes = [
   {
     path: 'admin/change',
     component: ChangeProductPageComponent,
+  },
+  {
+    path: 'admin/analytics',
+    component: AnalyticsPageComponent,
   },
 ];

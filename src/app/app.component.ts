@@ -6,6 +6,7 @@ import { LandingPageComponent } from '../pages/landing-page/landing-page.compone
 import { FeaturesPageComponent } from '../pages/features-page/features-page.component';
 import { ContactPageComponent } from '../pages/contact-page/contact-page.component';
 import { CommonModule } from '@angular/common';
+import { NgChartsConfiguration } from 'ng2-charts';
 
 @Component({
   selector: 'app-root',
