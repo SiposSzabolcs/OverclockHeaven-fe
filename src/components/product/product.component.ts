@@ -41,7 +41,7 @@ export class ProductComponent implements OnInit {
     const postBodyGetId = { email: this.users.getEmailFromToken() };
 
     this.http
-      .post<UserResponse>(`${environment.baseUrl}users/email`, postBodyGetId)
+      .post<UserResponse>(`${environment.baseUrl}/users/email`, postBodyGetId)
       .subscribe({
         next: (response) => {
           this.userId = response.id;
@@ -49,7 +49,7 @@ export class ProductComponent implements OnInit {
 
           this.http
             .post(
-              `${environment.baseUrl}users/${this.userId}/cart/add`,
+              `${environment.baseUrl}/users/${this.userId}/cart/add`,
               this.product.id
             )
             .subscribe((response) => {
