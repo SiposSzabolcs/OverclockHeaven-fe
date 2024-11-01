@@ -90,9 +90,19 @@
 
 <div class="container custom-display-sm" style="background-color: #e7f6ff">
   <div class="row">
-    <div class="col-3 border-bottom border-black" style="height: 60px"></div>
     <div
-      class="col-9 border-bottom border-start border-black d-flex align-items-center justify-content-end"
+      class="col-3 border-bottom border-start border-black d-flex align-items-center justify-content-center"
+      style="
+        height: 60px;
+        background-color: rgb(207, 207, 243);
+        cursor: pointer;
+      "
+      (click)="switchTagsVisibleState()"
+    >
+      <p style="margin: 0">Tags</p>
+    </div>
+    <div
+      class="col-9 border-bottom border-start border-end border-black d-flex align-items-center justify-content-end"
     >
       <div class="position-relative col-3">
         <button
@@ -127,7 +137,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-3" style="padding: 0px; margin: 0px">
+    <div
+      *ngIf="areTagsVisible"
+      class="col-12 border-black border-start border-end"
+      style="padding: 0px; margin: 0px"
+    >
       <div
         class="d-flex justify-content-center align-items-center user-select-none border-bottom border-black sidebar-button"
         style="height: 60px; width: 100%; cursor: pointer"
@@ -169,7 +183,7 @@
         Prebuilt PCs
       </div>
     </div>
-    <div class="col-9" style="margin: 0; padding: 0">
+    <div class="col-12" style="margin: 0; padding: 0">
       <app-products-list
         [sortBy]="sortBy"
         [tag]="activeButton"

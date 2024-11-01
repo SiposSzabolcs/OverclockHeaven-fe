@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/products/product.service';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 interface UserResponse {
   id: number;
@@ -22,6 +23,8 @@ export class ProductComponent implements OnInit {
   @Input() lastElement!: any;
   rating: number = 0;
   userId: number = 0;
+
+  notyf = inject(NotyfService);
   users = inject(UsersService);
   http = inject(HttpClient);
   router = inject(Router);
@@ -48,9 +51,12 @@ export class ProductComponent implements OnInit {
               `http://localhost:8080/users/${this.userId}/cart/add`,
               this.product.id
             )
-            .subscribe({});
+            .subscribe((response) => {
+              this.notyf.success('Item added to cart');
+            });
         },
         error: (error) => {
+          this.notyf.error('Something went wrong.');
           console.error('Error sending email', error);
         },
       });

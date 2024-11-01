@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 interface UserResponse {
   role: string;
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   isAuthorized: boolean = false;
 
+  notyf = inject(NotyfService);
   router = inject(Router);
   users = inject(UsersService);
   http = inject(HttpClient);
@@ -97,6 +99,7 @@ export class HeaderComponent implements OnInit {
       case 'logout':
         localStorage.removeItem('jwtToken');
         this.isLoggedIn = false;
+        this.notyf.success('Logged out successfully');
         this.isUserDropdownVisible = false;
         break;
       case 'cart':

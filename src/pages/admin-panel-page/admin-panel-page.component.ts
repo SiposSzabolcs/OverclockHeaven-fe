@@ -19,6 +19,9 @@ export class AdminPanelPageComponent {
       case 'change':
         this.router.navigateByUrl('admin/change');
         break;
+      case 'analytics':
+        this.router.navigateByUrl('admin/analytics');
+        break;
     }
   }
 }

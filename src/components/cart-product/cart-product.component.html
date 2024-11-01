@@ -1,8 +1,10 @@
-<div class="p-4 d-flex border border-top-0 border-black custom-display-lg">
+<div
+  class="p-4 d-flex border border-top-0 border-black custom-display-lg position-relative"
+>
   <div class="row justify-content-center align-items-center">
     <img [src]="product.imgUrl" alt="" class="col-3" />
     <h6 class="col-6 d-flex align-items-center">{{ product.name }}</h6>
-    <p *ngIf="showPrice" class="col-3 d-flex align-items-center">
+    <p *ngIf="showPrice" class="col-2 d-flex align-items-center">
       <b>{{ product.price }} $</b>
     </p>
     <div *ngIf="!showPrice" class="col-3">
@@ -11,15 +13,24 @@
       </button>
     </div>
   </div>
+
+  <!-- Close icon positioned at top-right -->
+  <i
+    *ngIf="showPrice"
+    class="fa-solid fa-x fa-2x position-absolute top-0 end-0 m-2"
+    style="cursor: pointer; color: red"
+    title="Remove product"
+    (click)="removeFromCartClicked()"
+  ></i>
 </div>
 
-<div class="d-flex custom-display-sm">
+<div class="d-flex custom-display-sm position-relative">
   <div
     class="row d-flex justify-content-center border-bottom border-black py-3"
   >
     <img [src]="product.imgUrl" alt="" class="col-6" />
-    <h6 class="col-10 d-flex align-items-center">{{ product.name }}</h6>
-    <p *ngIf="showPrice" class="col-2 d-flex align-items-center">
+    <h6 class="col-9 d-flex align-items-center">{{ product.name }}</h6>
+    <p *ngIf="showPrice" class="col-3 d-flex align-items-center">
       <b>{{ product.price }} $</b>
     </p>
     <div *ngIf="!showPrice" class="col-4 pt-4">
@@ -28,6 +39,14 @@
       </button>
     </div>
   </div>
+
+  <i
+    *ngIf="showPrice"
+    class="fa-solid fa-x fa-2x position-absolute top-0 end-0 m-2"
+    style="cursor: pointer; color: red"
+    title="Remove product"
+    (click)="removeFromCartClicked()"
+  ></i>
 </div>
 
 <style>

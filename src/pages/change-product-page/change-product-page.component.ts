@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 interface Product {
   id: number;
@@ -19,8 +20,10 @@ interface Product {
   styleUrl: './change-product-page.component.css',
 })
 export class ChangeProductPageComponent {
+  notyf = inject(NotyfService);
   http = inject(HttpClient);
   router = inject(Router);
+
   data: any[] = [];
   loading: boolean = false;
   buttonsVisable: boolean = true;
@@ -101,10 +104,10 @@ export class ChangeProductPageComponent {
       .put(`http://localhost:8080/products/update/${this.product.id}`, formData)
       .subscribe(
         (response) => {
-          console.log('Product added successfully', response);
+          this.notyf.success('Product changed.');
         },
         (error) => {
-          console.error('Error adding product', error);
+          this.notyf.error('Something went wrong.');
         }
       );
   }

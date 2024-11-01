@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 interface LoginObject {
   email: string;
@@ -26,6 +27,7 @@ export class LoginComponent {
 
   http = inject(HttpClient);
   router = inject(Router);
+  notyf = inject(NotyfService);
 
   isFormInvalid(): boolean {
     return !this.loginObject.email || !this.loginObject.password;
@@ -37,8 +39,8 @@ export class LoginComponent {
     }, 3000);
 
     if (mode === 'demo') {
-      this.loginObject.email = 'demo@gmail.com';
-      this.loginObject.password = 'test123';
+      this.loginObject.email = 'szabolcs@gmail.com';
+      this.loginObject.password = 'test12';
     }
 
     console.log(this.loginObject);
@@ -48,12 +50,12 @@ export class LoginComponent {
       .subscribe((res: any) => {
         if (res.result) {
           this.alertState = false;
-          alert('Login Success');
+          this.notyf.success('Logged in successfully');
           localStorage.setItem('jwtToken', res.token);
           this.router.navigateByUrl('');
         } else {
           this.alertState = true;
-          alert(res.msg);
+          this.notyf.error(res.msg);
         }
       });
   }

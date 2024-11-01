@@ -1,10 +1,26 @@
 <div class="container w-75 custom-display-lg">
+  <div class="row my-4">
+    <i
+      class="col-1 fa-solid fa-arrow-left fa-3x"
+      style="cursor: pointer"
+      (click)="backArrowClick()"
+    ></i>
+    <h1 class="col-10 text-center">Analytics</h1>
+  </div>
   <app-line-chart></app-line-chart>
   <app-bar-chart [data]="data"></app-bar-chart>
   <app-top-selling [data]="data"></app-top-selling>
 </div>
 
 <div class="container custom-display-sm">
+  <div class="row my-4">
+    <i
+      class="col-1 fa-solid fa-arrow-left fa-3x"
+      style="cursor: pointer"
+      (click)="backArrowClick()"
+    ></i>
+    <h1 class="col-10 text-center">Analytics</h1>
+  </div>
   <app-line-chart></app-line-chart>
   <app-bar-chart [data]="data"></app-bar-chart>
   <app-top-selling [data]="data"></app-top-selling>

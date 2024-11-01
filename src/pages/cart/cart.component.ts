@@ -35,6 +35,11 @@ export class CartComponent implements OnInit {
   stripeAmount!: number;
   isLoading: boolean = false;
 
+  handleItemRemoved(productId: number) {
+    this.cart = this.cart.filter((product) => product.id !== productId);
+    this.getTotalPrice();
+  }
+
   ngOnInit(): void {
     this.getCartItems().subscribe(() => {
       this.isLoading = false;
@@ -52,6 +57,7 @@ export class CartComponent implements OnInit {
   }
 
   getTotalPrice() {
+    this.totalPrice = 0;
     for (let item of this.cart) {
       this.totalPrice += item.price;
     }

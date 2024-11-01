@@ -26,14 +26,17 @@
   style="background-color: #e7f6ff"
 >
   <div *ngFor="let product of cart">
-    <app-cart-product [product]="product"></app-cart-product>
+    <app-cart-product
+      [product]="product"
+      (itemRemoved)="handleItemRemoved($event)"
+    ></app-cart-product>
   </div>
   <div class="d-flex py-4 px-1 justify-content-between align-items-center">
     <button class="btn btn-primary col-3" (click)="backClicked()">
       Back to store
     </button>
     <div class="d-flex flex-column col-4">
-      <h2 class="text-center">Total: {{ totalPrice }} $</h2>
+      <h2 class="text-center">Total: {{ totalPrice | number : "1.2-2" }} $</h2>
       <button class="btn btn-success" (click)="checkout()">
         Continue to payment
       </button>
@@ -54,7 +57,7 @@
       Back to store
     </button>
     <div class="d-flex flex-column col-4">
-      <h2 class="text-center">Total: {{ totalPrice }} $</h2>
+      <h2 class="text-center">Total: {{ totalPrice | number : "1.2-2" }} $</h2>
       <button class="btn btn-success" (click)="checkout()">
         Continue to payment
       </button>

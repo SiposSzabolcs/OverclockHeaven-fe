@@ -12,10 +12,15 @@ import { ProductsListComponent } from '../../components/products-list/products-l
 export class ProductsPageComponent {
   activeButton: string = 'CPUs';
   isSortDropdownVisible = false;
+  areTagsVisible = false;
   sortBy = 'ratings';
 
   enableSortDropdownVisibility() {
     this.isSortDropdownVisible = true;
+  }
+
+  switchTagsVisibleState() {
+    this.areTagsVisible = !this.areTagsVisible;
   }
 
   changeSortBy(sortBy: string) {
@@ -24,8 +29,7 @@ export class ProductsPageComponent {
   }
 
   setActiveButton(buttonNumber: string): void {
-    console.log(buttonNumber);
-
+    this.areTagsVisible = false;
     this.activeButton = buttonNumber;
   }
 }

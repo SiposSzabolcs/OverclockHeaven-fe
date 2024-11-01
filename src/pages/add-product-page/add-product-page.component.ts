@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 @Component({
   selector: 'app-add-product-page',
@@ -20,6 +21,7 @@ export class AddProductPageComponent {
   };
   selectedFile: File | null = null;
 
+  notyf = inject(NotyfService);
   http = inject(HttpClient);
   router = inject(Router);
 
@@ -47,7 +49,7 @@ export class AddProductPageComponent {
 
   onSubmit(): void {
     if (!this.selectedFile) {
-      alert('Please select a file');
+      this.notyf.error('Please select a file');
       return;
     }
 
@@ -60,11 +62,12 @@ export class AddProductPageComponent {
 
     this.http.post('http://localhost:8080/products/add', formData).subscribe(
       (response) => {
-        console.log('Product added successfully', response);
+        this.notyf.success('Product added.');
         this.resetForm();
       },
       (error) => {
-        console.error('Error adding product', error);
+        this.notyf.error('Error adding product.');
+        console.log(error);
       }
     );
   }

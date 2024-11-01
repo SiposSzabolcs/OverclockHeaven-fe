@@ -4,6 +4,7 @@ import { BarChartComponent } from '../../components/bar-chart/bar-chart.componen
 import { LineChartComponent } from '../../components/line-chart/line-chart.component';
 import { HttpClient } from '@angular/common/http';
 import { TopSellingComponent } from '../../components/top-selling/top-selling.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-analytics-page',
@@ -19,10 +20,15 @@ import { TopSellingComponent } from '../../components/top-selling/top-selling.co
 })
 export class AnalyticsPageComponent implements OnInit {
   http = inject(HttpClient);
+  router = inject(Router);
   data: any[] = [];
 
   ngOnInit(): void {
     this.fetchData();
+  }
+
+  backArrowClick() {
+    this.router.navigateByUrl('admin');
   }
 
   fetchData() {
