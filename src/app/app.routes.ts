@@ -16,6 +16,7 @@ import { ChangeProductPageComponent } from '../pages/change-product-page/change-
 import { AnalyticsPageComponent } from '../pages/analytics-page/analytics-page.component';
 
 export const routes: Routes = [
+  { path: 'home', redirectTo: '' },
   {
     path: '',
     component: LandingPageComponent,

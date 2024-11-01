@@ -60,8 +60,9 @@ export class HeaderComponent implements OnInit {
     this.isDropdownVisible = !this.isDropdownVisible;
   }
 
-  setActive(navItem: string) {
+  navbarClick(navItem: string) {
     this.activeNavItem = navItem;
+    this.router.navigateByUrl(navItem.toLowerCase());
   }
 
   isUserAuthorized() {
@@ -119,14 +120,18 @@ export class HeaderComponent implements OnInit {
   }
 
   private setActiveBasedOnRoute(url: string) {
-    if (url.includes('features')) {
-      this.activeNavItem = 'Features';
-    } else if (url.includes('contact')) {
-      this.activeNavItem = 'Contact';
-    } else if (url.includes('products')) {
-      this.activeNavItem = 'Products';
-    } else {
-      this.activeNavItem = 'Home';
+    switch (true) {
+      case url.includes('features'):
+        this.activeNavItem = 'Features';
+        break;
+      case url.includes('contact'):
+        this.activeNavItem = 'Contact';
+        break;
+      case url.includes('products'):
+        this.activeNavItem = 'Products';
+        break;
+      default:
+        this.activeNavItem = 'Home';
     }
   }
 }

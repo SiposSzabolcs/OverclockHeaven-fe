@@ -9,54 +9,58 @@
       />
     </div>
 
-    <ul class="nav offset-1 col-6 justify-content-between d-flex">
+    <ul
+      class="nav offset-1 col-6 justify-content-between d-flex user-select-none"
+      style="cursor: pointer"
+    >
       <li
         class="nav-item flex-fill text-center"
         style="background-color: #4169e1"
+        (click)="navbarClick('Home')"
       >
-        <a
+        <div
           class="nav-link"
           [class.active]="activeNavItem === 'Home'"
-          (click)="setActive('Home')"
-          href=""
-          >Home</a
+          (click)="navbarClick('Home')"
         >
+          Home
+        </div>
       </li>
       <li
         class="nav-item flex-fill text-center"
         style="background-color: #4169e1"
       >
-        <a
+        <div
           class="nav-link"
           [class.active]="activeNavItem === 'Features'"
-          (click)="setActive('Features')"
-          href="features"
-          >Features</a
+          (click)="navbarClick('Features')"
         >
+          Features
+        </div>
       </li>
       <li
         class="nav-item flex-fill text-center"
         style="background-color: #4169e1"
       >
-        <a
+        <div
           class="nav-link"
           [class.active]="activeNavItem === 'Contact'"
-          (click)="setActive('Contact')"
-          href="contact"
-          >Contact</a
+          (click)="navbarClick('Contact')"
         >
+          Contact
+        </div>
       </li>
       <li
         class="nav-item flex-fill text-center"
         style="background-color: #4169e1"
       >
-        <a
+        <div
           class="nav-link"
           [class.active]="activeNavItem === 'Products'"
-          (click)="setActive('Products')"
-          href="products"
-          >Products</a
+          (click)="navbarClick('Products')"
         >
+          Products
+        </div>
       </li>
     </ul>
 
@@ -233,41 +237,59 @@
   style="color: white; font-size: 24px"
 >
   <div
-    class="row border border-white border-top-0 p-3"
-    style="user-select: none; cursor: pointer"
+    class="row border border-black border-top-0"
+    style="user-select: none; cursor: pointer; background-color: #4169e1"
   >
-    <a class="nav-link" (click)="setActive('Home')" href="">Home</a>
+    <div
+      class="nav-link m-0 p-3"
+      (click)="navbarClick('Home')"
+      [class.active]="activeNavItem === 'Home'"
+    >
+      Home
+    </div>
   </div>
   <div
-    class="row border border-white border-top-0 p-3"
-    style="user-select: none; cursor: pointer"
+    class="row border border-black border-top-0"
+    style="user-select: none; cursor: pointer; background-color: #4169e1"
   >
-    <a class="nav-link" (click)="setActive('Features')" href="features"
-      >Features</a
+    <div
+      class="nav-link m-0 p-3"
+      (click)="navbarClick('Features')"
+      [class.active]="activeNavItem === 'Features'"
     >
+      Features
+    </div>
   </div>
   <div
-    class="row border border-white border-top-0 p-3"
-    style="user-select: none; cursor: pointer"
+    class="row border border-black border-top-0"
+    style="user-select: none; cursor: pointer; background-color: #4169e1"
   >
-    <a class="nav-link" (click)="setActive('Contact')" href="contact"
-      >Contact</a
+    <div
+      class="nav-link m-0 p-3"
+      (click)="navbarClick('Contact')"
+      [class.active]="activeNavItem === 'Contact'"
     >
+      Contact
+    </div>
   </div>
   <div
-    class="row border border-white border-top-0 p-3"
-    style="user-select: none; cursor: pointer"
+    class="row border border-black border-top-0"
+    style="user-select: none; cursor: pointer; background-color: #4169e1"
   >
-    <a class="nav-link" (click)="setActive('Products')" href="products"
-      >Products</a
+    <div
+      class="nav-link m-0 p-3"
+      (click)="navbarClick('Products')"
+      [class.active]="activeNavItem === 'Products'"
     >
+      Products
+    </div>
   </div>
 </div>
 
 <style>
   .nav-link.active {
     background-color: #03c2f6;
-    color: black;
+    color: hsl(0, 5%, 29%);
   }
 
   .nav-link {
@@ -277,8 +299,7 @@
   }
 
   .nav-link:hover {
-    background-color: #f8f9fa;
-    color: black;
+    background-color: hsl(193, 98%, 40%);
   }
 
   .dropdown-menu {
