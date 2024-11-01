@@ -42,6 +42,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartItems().subscribe(() => {
+      console.log(environment.stripePublicKey);
       this.isLoading = false;
       this.getTotalPrice();
     });
