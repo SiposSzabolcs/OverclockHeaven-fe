@@ -5,7 +5,7 @@ import { filter } from 'rxjs';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
 import { NotyfService } from '../../services/notyf/notyf.service';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface UserResponse {
   role: string;

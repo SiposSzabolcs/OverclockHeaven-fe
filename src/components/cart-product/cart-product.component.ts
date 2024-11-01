@@ -5,7 +5,7 @@ import { ProductService } from '../../services/products/product.service';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
 import { NotyfService } from '../../services/notyf/notyf.service';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface UserResponse {
   id: number;

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CartProductComponent } from '../../components/cart-product/cart-product.component';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface UserResponse {
   purchaseHistory: [];

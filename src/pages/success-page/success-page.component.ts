@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users/users.service';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface UserResponse {
   id: number;

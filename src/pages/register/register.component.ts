@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface RegisterObject {
   firstname: string;

@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ProductComponent } from '../product/product.component';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-products-list',

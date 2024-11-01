@@ -7,7 +7,7 @@ import { CartProductComponent } from '../../components/cart-product/cart-product
 import { map, switchMap } from 'rxjs';
 import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface UserResponse {
   cart: [];

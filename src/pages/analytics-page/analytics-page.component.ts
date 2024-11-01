@@ -5,7 +5,7 @@ import { LineChartComponent } from '../../components/line-chart/line-chart.compo
 import { HttpClient } from '@angular/common/http';
 import { TopSellingComponent } from '../../components/top-selling/top-selling.component';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-analytics-page',
