@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CartProductComponent } from '../../components/cart-product/cart-product.component';
+import { environment } from '../../environments/environment.development';
 
 interface UserResponse {
   purchaseHistory: [];
@@ -33,7 +34,7 @@ export class PurchaseHistoryPageComponent implements OnInit {
     const postBodyGetId = { email: this.users.getEmailFromToken() };
 
     return this.http
-      .post<UserResponse>('http://localhost:8080/users/email', postBodyGetId)
+      .post<UserResponse>(`${environment.baseUrl}/users/email`, postBodyGetId)
       .pipe(
         map((response) => (this.purchaseHistory = response.purchaseHistory))
       );

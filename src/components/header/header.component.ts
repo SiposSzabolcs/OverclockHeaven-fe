@@ -5,6 +5,7 @@ import { filter } from 'rxjs';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { environment } from '../../environments/environment.development';
 
 interface UserResponse {
   role: string;
@@ -67,7 +68,7 @@ export class HeaderComponent implements OnInit {
     let email = { email: this.users.getEmailFromToken() };
 
     this.http
-      .post<UserResponse>('http://localhost:8080/users/email', email)
+      .post<UserResponse>(`${environment.baseUrl}/users/email`, email)
       .subscribe((response) => {
         console.log(response);
 

@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ProductComponent } from '../product/product.component';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-products-list',
@@ -54,7 +55,7 @@ export class ProductsListComponent implements OnInit, OnChanges {
     }
 
     this.http
-      .get<any[]>(`http://localhost:8080/products/get/${this.urlTag}`)
+      .get<any[]>(`${environment.baseUrl}/products/get/${this.urlTag}`)
       .subscribe({
         next: (data) => {
           this.data = data;

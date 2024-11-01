@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { environment } from '../../environments/environment.development';
 
 interface RegisterObject {
   firstname: string;
@@ -50,7 +51,7 @@ export class RegisterComponent {
 
   onRegister() {
     this.http
-      .post('http://localhost:8080/auth/register', this.registerObject)
+      .post(`${environment.baseUrl}/auth/register`, this.registerObject)
       .subscribe((res: any) => {
         if (res.result) {
           alert('Registered successfully');

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users/users.service';
+import { environment } from '../../environments/environment.development';
 
 interface UserResponse {
   id: number;
@@ -31,47 +32,48 @@ export class SuccessPageComponent {
   }
 
   checkPaymentStatus(sessionId: string) {
-    const host = 'http://localhost:8080';
-    this.http.get(`${host}/payment/session/${sessionId}`).subscribe(
-      (response: any) => {
-        console.log(response);
+    this.http
+      .get(`${environment.baseUrl}/payment/session/${sessionId}`)
+      .subscribe(
+        (response: any) => {
+          console.log(response);
 
-        this.paymentStatus = response.payment_status;
-        this.loading = false;
+          this.paymentStatus = response.payment_status;
+          this.loading = false;
 
-        this.http
-          .post('http://localhost:8080/payment/add', {
-            amount: response.amount_total,
-            userEmail: this.users.getEmailFromToken(),
-          })
-          .subscribe((response) => {
-            console.log(response);
-          });
+          this.http
+            .post(`${environment.baseUrl}/payment/add`, {
+              amount: response.amount_total,
+              userEmail: this.users.getEmailFromToken(),
+            })
+            .subscribe((response) => {
+              console.log(response);
+            });
 
-        this.http
-          .post<UserResponse>('http://localhost:8080/users/email', {
-            email: this.users.getEmailFromToken(),
-          })
-          .subscribe({
-            next: (response) => {
-              this.http
-                .post(
-                  `http://localhost:8080/users/${response.id}/cart/purchase`,
-                  null
-                )
-                .subscribe((response) => {
-                  console.log(response);
-                });
-            },
-            error: (error) => {
-              console.error('Error sending email', error);
-            },
-          });
-      },
-      (error) => {
-        console.error('Error fetching payment status:', error);
-        this.loading = false;
-      }
-    );
+          this.http
+            .post<UserResponse>(`${environment.baseUrl}/users/email`, {
+              email: this.users.getEmailFromToken(),
+            })
+            .subscribe({
+              next: (response) => {
+                this.http
+                  .post(
+                    `${environment.baseUrl}/users/${response.id}/cart/purchase`,
+                    null
+                  )
+                  .subscribe((response) => {
+                    console.log(response);
+                  });
+              },
+              error: (error) => {
+                console.error('Error sending email', error);
+              },
+            });
+        },
+        (error) => {
+          console.error('Error fetching payment status:', error);
+          this.loading = false;
+        }
+      );
   }
 }

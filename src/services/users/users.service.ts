@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +40,7 @@ export class UsersService {
     if (token) {
       try {
         const data = await this.http
-          .get<any[]>('http://localhost:8080/users/ping')
+          .get<any[]>(`${environment.baseUrl}/users/ping`)
           .toPromise();
         console.log(data);
         return true;

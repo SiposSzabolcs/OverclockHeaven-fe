@@ -52,7 +52,7 @@ export class CartComponent implements OnInit {
     const postBodyGetId = { email: this.users.getEmailFromToken() };
 
     return this.http
-      .post<UserResponse>('http://localhost:8080/users/email', postBodyGetId)
+      .post<UserResponse>(`${environment.baseUrl}/users/email`, postBodyGetId)
       .pipe(map((response) => (this.cart = response.cart)));
   }
 
@@ -70,14 +70,13 @@ export class CartComponent implements OnInit {
 
   checkout() {
     this.isLoading = true;
-    const host = 'http://localhost:8080';
 
     this.stripe = this.stripeFactory.create(environment.stripePublicKey);
     this.stripeAmount = this.totalPrice;
 
     this.http
       .post(
-        host + '/payment/checkout-session',
+        `${environment.baseUrl}/payment/checkout-session`,
         {
           amount: this.stripeAmount * 100,
           currency: 'usd',

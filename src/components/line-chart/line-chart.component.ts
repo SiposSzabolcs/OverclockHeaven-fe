@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-line-chart',
@@ -42,7 +43,7 @@ export class LineChartComponent implements OnInit {
 
   fetchData() {
     this.http
-      .get<any[]>('http://localhost:8080/payment/get')
+      .get<any[]>(`${environment.baseUrl}/payment/get`)
       .subscribe((response) => {
         const aggregatedData: { [key: string]: number } = {};
         for (let d of response) {

@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { environment } from '../../environments/environment.development';
 
 interface LoginObject {
   email: string;
@@ -46,7 +47,7 @@ export class LoginComponent {
     console.log(this.loginObject);
 
     this.http
-      .post('http://localhost:8080/auth/authenticate', this.loginObject)
+      .post(`${environment.baseUrl}/auth/authenticate`, this.loginObject)
       .subscribe((res: any) => {
         if (res.result) {
           this.alertState = false;

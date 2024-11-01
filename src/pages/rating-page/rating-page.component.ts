@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment.development';
 
 interface CommentObject {
   rating: number;
@@ -57,7 +58,7 @@ export class RatingPageComponent implements OnInit {
     let email = { email: this.users.getEmailFromToken() };
 
     this.http
-      .post<UserResponse>('http://localhost:8080/users/email', email)
+      .post<UserResponse>(`${environment.baseUrl}/users/email`, email)
       .subscribe((response) => {
         this.CommentObject.userId = response.id;
         this.CommentObject.name = `${response.firstname} ${response.lastname}`;
@@ -65,7 +66,7 @@ export class RatingPageComponent implements OnInit {
 
         if (this.isFormValid()) {
           this.http
-            .post(`http://localhost:8080/products/rate/${this.product.id}`, {
+            .post(`${environment.baseUrl}/products/rate/${this.product.id}`, {
               rating: this.CommentObject.rating,
               userId: this.CommentObject.userId,
             })
@@ -75,7 +76,7 @@ export class RatingPageComponent implements OnInit {
 
           this.http
             .post(
-              `http://localhost:8080/products/comment/${this.product.id}`,
+              `${environment.baseUrl}/products/comment/${this.product.id}`,
               this.CommentObject
             )
             .subscribe((response) => {

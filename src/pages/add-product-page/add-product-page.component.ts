@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-add-product-page',
@@ -60,7 +61,7 @@ export class AddProductPageComponent {
     formData.append('price', this.product.price.toString());
     formData.append('tag', this.product.tag);
 
-    this.http.post('http://localhost:8080/products/add', formData).subscribe(
+    this.http.post(`${environment.baseUrl}/products/add`, formData).subscribe(
       (response) => {
         this.notyf.success('Product added.');
         this.resetForm();

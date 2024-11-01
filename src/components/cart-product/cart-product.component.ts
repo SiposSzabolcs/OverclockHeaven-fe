@@ -5,6 +5,7 @@ import { ProductService } from '../../services/products/product.service';
 import { UsersService } from '../../services/users/users.service';
 import { HttpClient } from '@angular/common/http';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { environment } from '../../environments/environment.development';
 
 interface UserResponse {
   id: number;
@@ -32,12 +33,12 @@ export class CartProductComponent {
     const postBodyGetId = { email: this.users.getEmailFromToken() };
 
     this.http
-      .post<UserResponse>('http://localhost:8080/users/email', postBodyGetId)
+      .post<UserResponse>(`${environment.baseUrl}/users/email`, postBodyGetId)
       .subscribe({
         next: (response) => {
           this.http
             .post(
-              `http://localhost:8080/users/${response.id}/cart/remove`,
+              `${environment.baseUrl}/users/${response.id}/cart/remove`,
               this.product.id
             )
             .subscribe((response) => {

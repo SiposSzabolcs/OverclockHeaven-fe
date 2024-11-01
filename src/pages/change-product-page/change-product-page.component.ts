@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { environment } from '../../environments/environment.development';
 
 interface Product {
   id: number;
@@ -37,7 +38,7 @@ export class ChangeProductPageComponent {
     this.productVisible = true;
 
     this.http
-      .get<any[]>(`http://localhost:8080/products/get/${tag}`)
+      .get<any[]>(`${environment.baseUrl}/products/get/${tag}`)
       .subscribe({
         next: (data) => {
           this.data = data;
@@ -101,10 +102,26 @@ export class ChangeProductPageComponent {
     formData.append('tag', this.product.tag);
 
     this.http
-      .put(`http://localhost:8080/products/update/${this.product.id}`, formData)
+      .put(
+        `${environment.baseUrl}/products/update/${this.product.id}`,
+        formData
+      )
       .subscribe(
         (response) => {
           this.notyf.success('Product changed.');
+        },
+        (error) => {
+          this.notyf.error('Something went wrong.');
+        }
+      );
+  }
+
+  onDelete(): void {
+    this.http
+      .delete(`${environment.baseUrl}/products/remove/${this.product.id}`)
+      .subscribe(
+        (response) => {
+          this.notyf.success('Product deleted.');
         },
         (error) => {
           this.notyf.error('Something went wrong.');

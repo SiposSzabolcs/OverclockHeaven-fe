@@ -5,6 +5,7 @@ import { LineChartComponent } from '../../components/line-chart/line-chart.compo
 import { HttpClient } from '@angular/common/http';
 import { TopSellingComponent } from '../../components/top-selling/top-selling.component';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-analytics-page',
@@ -33,7 +34,7 @@ export class AnalyticsPageComponent implements OnInit {
 
   fetchData() {
     this.http
-      .get<any[]>('http://localhost:8080/products/sold/get')
+      .get<any[]>(`${environment.baseUrl}/products/sold/get`)
       .subscribe((response) => {
         this.data = response;
       });

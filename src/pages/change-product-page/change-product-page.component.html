@@ -98,13 +98,19 @@
     style="background-color: rgb(207, 207, 243)"
     *ngIf="!buttonsVisable && !productVisible"
   >
-    <div class="row mb-4">
+    <div class="row mb-4 align-items-center">
       <i
         class="col-1 fa-solid fa-arrow-left fa-3x"
         style="cursor: pointer"
         (click)="backArrowConfig('changeForm')"
+        title="Remove Product"
       ></i>
       <h2 class="col-10 text-center">Change product</h2>
+      <i
+        class="fa-solid fa-trash fa-2x col-1"
+        style="cursor: pointer"
+        (click)="onDelete()"
+      ></i>
     </div>
     <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
       <div class="mb-3">
@@ -187,6 +193,7 @@
         class="col-1 fa-solid fa-arrow-left fa-3x"
         style="cursor: pointer"
         (click)="backArrowConfig('chooseTag')"
+        title="Remove Product"
       ></i>
       <h2 class="text-center col-10">
         Choose the products tag you would like to change.
@@ -279,13 +286,18 @@
     style="background-color: rgb(207, 207, 243)"
     *ngIf="!buttonsVisable && !productVisible"
   >
-    <div class="row mb-4">
+    <div class="row mb-4 align-items-center">
       <i
         class="col-1 fa-solid fa-arrow-left fa-3x"
         style="cursor: pointer"
         (click)="backArrowConfig('changeForm')"
       ></i>
       <h2 class="col-10 text-center">Change product</h2>
+      <i
+        class="fa-solid fa-trash fa-2x col-1"
+        style="cursor: pointer"
+        (click)="onDelete()"
+      ></i>
     </div>
     <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
       <div class="mb-3">
