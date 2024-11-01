@@ -109,6 +109,14 @@ export class ChangeProductPageComponent {
       .subscribe(
         (response) => {
           this.notyf.success('Product changed.');
+          this.buttonsVisable = true;
+          this.productVisible = false;
+          setTimeout(() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }, 10);
         },
         (error) => {
           this.notyf.error('Something went wrong.');
@@ -122,6 +130,14 @@ export class ChangeProductPageComponent {
       .subscribe(
         (response) => {
           this.notyf.success('Product deleted.');
+          this.buttonsVisable = true;
+          this.productVisible = false;
+          setTimeout(() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }, 10);
         },
         (error) => {
           this.notyf.error('Something went wrong.');

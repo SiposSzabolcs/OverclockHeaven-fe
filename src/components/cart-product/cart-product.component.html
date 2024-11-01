@@ -14,7 +14,6 @@
     </div>
   </div>
 
-  <!-- Close icon positioned at top-right -->
   <i
     *ngIf="showPrice"
     class="fa-solid fa-x fa-2x position-absolute top-0 end-0 m-2"
@@ -48,25 +47,3 @@
     (click)="removeFromCartClicked()"
   ></i>
 </div>
-
-<style>
-  .custom-display-lg {
-    display: none !important;
-  }
-
-  @media (min-width: 1031px) {
-    .custom-display-lg {
-      display: block !important;
-    }
-  }
-
-  .custom-display-sm {
-    display: block !important;
-  }
-
-  @media (min-width: 1031px) {
-    .custom-display-sm {
-      display: none !important;
-    }
-  }
-</style>

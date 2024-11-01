@@ -1,15 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 html,
 body {
   font-family: "Inter", sans-serif;
-  font-size: 16px; /* Optional: set a base font size */
+  font-size: 16px;
   margin: 0;
   padding: 0;
   background-color: #e7f6ff;
 }
 
-/* Adjust heading sizes (optional) */
 h1,
 h2,
 h3,
@@ -17,12 +15,12 @@ h4,
 h5,
 h6 {
   font-family: "Inter", sans-serif;
-  font-weight: 600; /* Optional: set default weight for headings */
+  font-weight: 600;
 }
 
 p {
   font-family: "Inter", sans-serif;
-  font-weight: 400; /* Optional: set default weight for paragraphs */
+  font-weight: 400;
 }
 
 .custom-display-lg {
