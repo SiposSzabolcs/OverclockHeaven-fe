@@ -49,8 +49,6 @@ export class LoginComponent {
       this.loginObject.password = 'test123';
     }
 
-    console.log(this.loginObject);
-
     this.http
       .post(`${environment.baseUrl}/auth/authenticate`, this.loginObject)
       .subscribe((res: any) => {

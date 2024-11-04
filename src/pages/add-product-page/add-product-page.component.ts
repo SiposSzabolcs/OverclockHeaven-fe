@@ -68,7 +68,7 @@ export class AddProductPageComponent {
       },
       (error) => {
         this.notyf.error('Error adding product.');
-        console.log(error);
+        console.error(error);
       }
     );
   }

@@ -36,8 +36,6 @@ export class SuccessPageComponent {
       .get(`${environment.baseUrl}/payment/session/${sessionId}`)
       .subscribe(
         (response: any) => {
-          console.log(response);
-
           this.paymentStatus = response.payment_status;
           this.loading = false;
 
@@ -46,9 +44,7 @@ export class SuccessPageComponent {
               amount: response.amount_total,
               userEmail: this.users.getEmailFromToken(),
             })
-            .subscribe((response) => {
-              console.log(response);
-            });
+            .subscribe((response) => {});
 
           this.http
             .post<UserResponse>(`${environment.baseUrl}/users/email`, {
@@ -61,9 +57,7 @@ export class SuccessPageComponent {
                     `${environment.baseUrl}/users/${response.id}/cart/purchase`,
                     null
                   )
-                  .subscribe((response) => {
-                    console.log(response);
-                  });
+                  .subscribe((response) => {});
               },
               error: (error) => {
                 console.error('Error sending email', error);

@@ -25,8 +25,6 @@ export class FooterComponent {
       case 'contact':
         this.router.navigateByUrl('contact');
         break;
-      default:
-        console.log(destination);
     }
   }
 }

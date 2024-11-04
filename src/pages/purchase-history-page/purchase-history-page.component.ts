@@ -25,7 +25,6 @@ export class PurchaseHistoryPageComponent implements OnInit {
   ngOnInit(): void {
     this.getPurchaseHistory().subscribe(() => {
       this.isLoading = false;
-      console.log(this.purchaseHistory);
     });
   }
 

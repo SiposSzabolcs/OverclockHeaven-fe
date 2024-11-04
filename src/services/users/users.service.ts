@@ -42,7 +42,6 @@ export class UsersService {
         const data = await this.http
           .get<any[]>(`${environment.baseUrl}/users/ping`)
           .toPromise();
-        console.log(data);
         return true;
       } catch (error) {
         this.clearToken();

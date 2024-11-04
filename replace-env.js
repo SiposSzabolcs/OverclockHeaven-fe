@@ -13,4 +13,4 @@ export const environment = {
 `;
 
 fs.writeFileSync("src/environments/environment.ts", envConfig);
-console.log("Environment configuration file generated successfully.");
+("Environment configuration file generated successfully.");

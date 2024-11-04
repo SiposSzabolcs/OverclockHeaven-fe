@@ -43,7 +43,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartItems().subscribe(() => {
-      console.log(environment.stripePublicKey);
       this.isLoading = false;
       this.getTotalPrice();
     });
@@ -63,7 +62,6 @@ export class CartComponent implements OnInit {
     for (let item of this.cart) {
       this.totalPrice += item.price;
     }
-    console.log(this.totalPrice);
   }
 
   backClicked() {
@@ -87,16 +85,15 @@ export class CartComponent implements OnInit {
       )
       .pipe(
         switchMap((response: HttpResponse<Object>) => {
-          console.log(response);
           const session: IStripeSession = response.body as IStripeSession;
+          this.redirectingToSprite = false;
           return this.stripe.redirectToCheckout({ sessionId: session.id });
         })
       )
       .subscribe((result) => {
         if (result.error) {
-          console.log(this.stripeAmount);
-
-          console.log(result.error);
+          this.redirectingToSprite = false;
+          console.error(result.error);
         }
       });
   }

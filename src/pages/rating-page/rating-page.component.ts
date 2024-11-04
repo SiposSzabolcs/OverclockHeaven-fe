@@ -62,7 +62,6 @@ export class RatingPageComponent implements OnInit {
       .subscribe((response) => {
         this.CommentObject.userId = response.id;
         this.CommentObject.name = `${response.firstname} ${response.lastname}`;
-        console.log(this.CommentObject);
 
         if (this.isFormValid()) {
           this.http
@@ -70,18 +69,14 @@ export class RatingPageComponent implements OnInit {
               rating: this.CommentObject.rating,
               userId: this.CommentObject.userId,
             })
-            .subscribe((response) => {
-              console.log(response);
-            });
+            .subscribe((response) => {});
 
           this.http
             .post(
               `${environment.baseUrl}/products/comment/${this.product.id}`,
               this.CommentObject
             )
-            .subscribe((response) => {
-              console.log(response);
-            });
+            .subscribe((response) => {});
         }
       });
   }
