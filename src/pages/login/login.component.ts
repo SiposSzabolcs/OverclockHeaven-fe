@@ -40,7 +40,7 @@ export class LoginComponent {
     }, 3000);
 
     if (mode === 'demo') {
-      this.loginObject.email = 'demo@gmail.com';
+      this.loginObject.email = 'demouser@gmail.com';
       this.loginObject.password = 'test12';
     }
 

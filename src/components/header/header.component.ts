@@ -101,6 +101,7 @@ export class HeaderComponent implements OnInit {
       case 'logout':
         localStorage.removeItem('jwtToken');
         this.isLoggedIn = false;
+        this.router.navigateByUrl('home');
         this.notyf.success('Logged out successfully');
         this.isUserDropdownVisible = false;
         break;

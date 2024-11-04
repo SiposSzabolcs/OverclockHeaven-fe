@@ -34,6 +34,7 @@ export class CartComponent implements OnInit {
   stripe!: StripeInstance;
   stripeAmount!: number;
   isLoading: boolean = false;
+  redirectingToSprite: boolean = false;
 
   handleItemRemoved(productId: number) {
     this.cart = this.cart.filter((product) => product.id !== productId);
@@ -70,7 +71,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
-    this.isLoading = true;
+    this.redirectingToSprite = true;
 
     this.stripe = this.stripeFactory.create(environment.stripePublicKey);
     this.stripeAmount = this.totalPrice;
