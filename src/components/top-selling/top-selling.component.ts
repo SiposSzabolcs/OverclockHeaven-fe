@@ -20,6 +20,5 @@ export class TopSellingComponent implements OnChanges {
 
   showMoreButtonClicked() {
     this.loadedTopSelling = this.loadedTopSelling + 5;
-    console.log(this.loadedTopSelling);
   }
 }

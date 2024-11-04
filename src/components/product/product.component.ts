@@ -45,7 +45,6 @@ export class ProductComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.userId = response.id;
-          console.log(this.userId);
 
           this.http
             .post(

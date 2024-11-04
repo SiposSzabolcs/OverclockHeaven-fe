@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit {
       });
 
     const isValid = await this.users.CheckTokenExpried();
-    console.log(isValid);
 
     if (isValid) {
       this.isLoggedIn = true;
@@ -71,13 +70,11 @@ export class HeaderComponent implements OnInit {
     this.http
       .post<UserResponse>(`${environment.baseUrl}/users/email`, email)
       .subscribe((response) => {
-        console.log(response);
 
         if (response.role === 'ADMIN') {
           this.isAuthorized = true;
         }
 
-        console.log(this.isAuthorized);
       });
   }
 

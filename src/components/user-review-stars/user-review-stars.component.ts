@@ -30,7 +30,6 @@ export class UserReviewStarsComponent implements OnInit {
       }
     }
 
-    console.log(this.ratings_dict);
   }
 
   transformRatingsToPercentages(): void {

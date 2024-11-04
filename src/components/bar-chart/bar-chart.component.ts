@@ -70,8 +70,6 @@ export class BarChartComponent implements OnChanges {
   }
 
   aggragateData() {
-    console.log(this.data);
-
     const aggregatedData: { [key: string]: number } = {};
     for (let d of this.data) {
       if (!aggregatedData[d.product.tag]) {
