@@ -40,8 +40,13 @@ export class LoginComponent {
     }, 3000);
 
     if (mode === 'demo') {
-      this.loginObject.email = 'szabolcs@gmail.com';
+      this.loginObject.email = 'demo@gmail.com';
       this.loginObject.password = 'test12';
+    }
+
+    if (mode == 'admin') {
+      this.loginObject.email = 'demoadmin@gmail.com';
+      this.loginObject.password = 'test123';
     }
 
     console.log(this.loginObject);
